@@ -30,7 +30,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        creditsLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -52,10 +52,11 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-17-33.png")); // NOI18N
         jLabel1.setText("Friends");
 
-        jLabel4.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(74, 103, 147));
-        jLabel4.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-29-24.png")); // NOI18N
-        jLabel4.setText("Credits");
+        creditsLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
+        creditsLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-29-24.png")); // NOI18N
+        creditsLabel.setText("Credits");
+        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -158,7 +159,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(creditsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(signUpLabel)
                 .addGap(29, 29, 29))
@@ -175,7 +176,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(creditsLabel)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(signUpLabel)))
@@ -196,7 +197,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_signUpLabelMouseClicked
 
     private void startNowLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startNowLabelMouseClicked
-        // Código para ao clicar no sign-up vá para a tela do cadastro:
+        // Código para ao clicar no start now vá para a tela do cadastro:
         new Tela_Cadastro_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_startNowLabelMouseClicked
@@ -237,10 +238,10 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel creditsLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
