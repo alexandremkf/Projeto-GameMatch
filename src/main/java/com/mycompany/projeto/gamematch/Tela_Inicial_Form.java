@@ -56,7 +56,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
         creditsLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-29-24.png")); // NOI18N
         creditsLabel.setText("Credits");
-        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(14, 47, 86));
 
