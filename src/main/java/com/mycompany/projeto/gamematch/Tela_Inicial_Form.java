@@ -15,6 +15,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
      */
     public Tela_Inicial_Form() {
         initComponents();
+        setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
     }
 
     /**
@@ -26,21 +27,179 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        startNowLabel = new javax.swing.JLabel();
+        signUpLabel = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 12, 21));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-08 21-21-58.png")); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(74, 103, 147));
+        jLabel1.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-17-33.png")); // NOI18N
+        jLabel1.setText("Friends");
+
+        jLabel4.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(74, 103, 147));
+        jLabel4.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-29-24.png")); // NOI18N
+        jLabel4.setText("Credits");
+
+        jPanel2.setBackground(new java.awt.Color(14, 47, 86));
+
+        jPanel4.setBackground(new java.awt.Color(0, 12, 21));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-47-10.png")); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(74, 103, 147));
+        jLabel9.setText("Connect. Play. Make history with new friends.");
+
+        jLabel10.setFont(new java.awt.Font("Monospaced", 0, 80)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(74, 103, 147));
+        jLabel10.setText("Start your");
+
+        jLabel6.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(74, 103, 147));
+        jLabel6.setText("Your next squad is just one click away.");
+
+        startNowLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-52-52.png")); // NOI18N
+        startNowLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        startNowLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                startNowLabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(24, 24, 24)
+                                    .addComponent(jLabel6)))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jLabel8)))
+                .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(startNowLabel)
+                .addGap(210, 210, 210))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
+                .addGap(26, 26, 26)
+                .addComponent(startNowLabel)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(218, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(187, 187, 187))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+
+        signUpLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-44-03.png")); // NOI18N
+        signUpLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                signUpLabelMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(signUpLabel)
+                .addGap(29, 29, 29))
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(signUpLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void signUpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpLabelMouseClicked
+        // Código para ao clicar no sign-up vá para a tela do cadastro:
+        new Tela_Cadastro_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_signUpLabelMouseClicked
+
+    private void startNowLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startNowLabelMouseClicked
+        // Código para ao clicar no sign-up vá para a tela do cadastro:
+        new Tela_Cadastro_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_startNowLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +237,17 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel signUpLabel;
+    private javax.swing.JLabel startNowLabel;
     // End of variables declaration//GEN-END:variables
 }
