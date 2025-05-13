@@ -48,7 +48,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="creditsLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="signUpLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="jsignUpLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               </Group>
               <Component id="jPanel2" alignment="1" max="32767" attributes="0"/>
@@ -71,7 +71,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="signUpLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="jsignUpLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -85,7 +85,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-08 21-21-58.png"/>
+              <Image iconType="3" name="/com/mycompany/projeto/gamematch/gm-small.png"/>
             </Property>
           </Properties>
         </Component>
@@ -98,7 +98,7 @@
               <Color blue="93" green="67" red="4a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-17-33.png"/>
+              <Image iconType="3" name="/com/mycompany/projeto/gamematch/friends.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Friends"/>
           </Properties>
@@ -112,7 +112,7 @@
               <Color blue="93" green="67" red="4a" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-29-24.png"/>
+              <Image iconType="3" name="/com/mycompany/projeto/gamematch/credits.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Credits"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -142,7 +142,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -182,7 +182,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="startNowLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="jstartNowLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -198,9 +198,9 @@
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                          <Component id="startNowLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jstartNowLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -209,7 +209,7 @@
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-47-10.png"/>
+                      <Image iconType="3" name="/com/mycompany/projeto/gamematch/gm-big.png"/>
                     </Property>
                   </Properties>
                 </Component>
@@ -246,34 +246,34 @@
                     <Property name="text" type="java.lang.String" value="Your next squad is just one click away."/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="startNowLabel">
+                <Component class="javax.swing.JLabel" name="jstartNowLabel">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="2" name="/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-52-52.png"/>
+                      <Image iconType="3" name="/com/mycompany/projeto/gamematch/start-now.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="startNowLabelMouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jstartNowLabelMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="signUpLabel">
+        <Component class="javax.swing.JLabel" name="jsignUpLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-44-03.png"/>
+              <Image iconType="3" name="/com/mycompany/projeto/gamematch/sign-up.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="signUpLabelMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jsignUpLabelMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

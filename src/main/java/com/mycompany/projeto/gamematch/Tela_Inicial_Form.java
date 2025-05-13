@@ -37,24 +37,24 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        startNowLabel = new javax.swing.JLabel();
-        signUpLabel = new javax.swing.JLabel();
+        jstartNowLabel = new javax.swing.JLabel();
+        jsignUpLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-08 21-21-58.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(74, 103, 147));
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-17-33.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
         jLabel1.setText("Friends");
 
         creditsLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
-        creditsLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-29-24.png")); // NOI18N
+        creditsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
         creditsLabel.setText("Credits");
         creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -62,7 +62,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-47-10.png")); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-big.png"))); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(74, 103, 147));
@@ -76,11 +76,11 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(74, 103, 147));
         jLabel6.setText("Your next squad is just one click away.");
 
-        startNowLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-52-52.png")); // NOI18N
-        startNowLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        startNowLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        jstartNowLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/start-now.png"))); // NOI18N
+        jstartNowLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jstartNowLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                startNowLabelMouseClicked(evt);
+                jstartNowLabelMouseClicked(evt);
             }
         });
 
@@ -105,7 +105,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(startNowLabel)
+                .addComponent(jstartNowLabel)
                 .addGap(210, 210, 210))
         );
         jPanel4Layout.setVerticalGroup(
@@ -119,9 +119,9 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addGap(26, 26, 26)
-                .addComponent(startNowLabel)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jstartNowLabel)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -138,14 +138,14 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        signUpLabel.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-44-03.png")); // NOI18N
-        signUpLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        signUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+        jsignUpLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/sign-up.png"))); // NOI18N
+        jsignUpLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jsignUpLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                signUpLabelMouseClicked(evt);
+                jsignUpLabelMouseClicked(evt);
             }
         });
 
@@ -161,7 +161,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(creditsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(signUpLabel)
+                .addComponent(jsignUpLabel)
                 .addGap(29, 29, 29))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -179,7 +179,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                             .addComponent(creditsLabel)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(signUpLabel)))
+                        .addComponent(jsignUpLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -190,17 +190,17 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void signUpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpLabelMouseClicked
+    private void jsignUpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsignUpLabelMouseClicked
         // Código para ao clicar no sign-up vá para a tela do cadastro:
         new Tela_Cadastro_Form().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_signUpLabelMouseClicked
+    }//GEN-LAST:event_jsignUpLabelMouseClicked
 
-    private void startNowLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startNowLabelMouseClicked
+    private void jstartNowLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jstartNowLabelMouseClicked
         // Código para ao clicar no start now vá para a tela do cadastro:
         new Tela_Cadastro_Form().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_startNowLabelMouseClicked
+    }//GEN-LAST:event_jstartNowLabelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -248,7 +248,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JLabel signUpLabel;
-    private javax.swing.JLabel startNowLabel;
+    private javax.swing.JLabel jsignUpLabel;
+    private javax.swing.JLabel jstartNowLabel;
     // End of variables declaration//GEN-END:variables
 }
