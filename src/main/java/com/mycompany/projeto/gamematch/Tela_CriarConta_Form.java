@@ -496,7 +496,7 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldPlayingTimecriarFocusLost
 
     private void jLabelCreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCreateMouseClicked
-         // Código para ao clicar no create vá para a tela principal:
+        // Código para ao clicar no create vá para a tela principal:
         new Tela_Principal_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabelCreateMouseClicked
