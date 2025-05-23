@@ -2,7 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+
+
 package com.mycompany.projeto.gamematch;
+
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -15,6 +25,8 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
      */
     public Tela_Principal_Form() {
         initComponents();
+        // ... final do initComponents()
+        adicionarEventosDosBotoes(painelCategorias, jSearchTextField);
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
     }
 
@@ -33,7 +45,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         creditsLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        painelCategorias = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -89,7 +101,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(0, 12, 21));
 
-        jPanel3.setBackground(new java.awt.Color(8, 27, 40));
+        painelCategorias.setBackground(new java.awt.Color(8, 27, 40));
 
         jLabel3.setBackground(new java.awt.Color(8, 27, 40));
         jLabel3.setFont(new java.awt.Font("Monospaced", 0, 36)); // NOI18N
@@ -238,42 +250,42 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jButton20.setForeground(new java.awt.Color(255, 255, 255));
         jButton20.setText("Night");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCategoriasLayout = new javax.swing.GroupLayout(painelCategorias);
+        painelCategorias.setLayout(painelCategoriasLayout);
+        painelCategoriasLayout.setHorizontalGroup(
+            painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCategoriasLayout.createSequentialGroup()
+                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel7)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                                         .addComponent(jButton6)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton7)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton8))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                                         .addComponent(jButton10)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton11)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton12)))
                                 .addGap(213, 213, 213)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                                         .addComponent(jButton14)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton15))
                                     .addComponent(jLabel9)))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                                         .addComponent(jButton1)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton2)
@@ -281,46 +293,46 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                                         .addComponent(jButton3))
                                     .addComponent(jLabel5))
                                 .addGap(159, 159, 159)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
                                     .addComponent(jLabel10)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(painelCategoriasLayout.createSequentialGroup()
                                                 .addGap(6, 6, 6)
                                                 .addComponent(jButton13)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jButton16))
-                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addGroup(painelCategoriasLayout.createSequentialGroup()
                                                 .addComponent(jButton18)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jButton19)))
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton17)
                                             .addComponent(jButton20)))))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(painelCategoriasLayout.createSequentialGroup()
                                 .addComponent(jButton4)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton9))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(275, 275, 275)
                         .addComponent(jLabel3)))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        painelCategoriasLayout.setVerticalGroup(
+            painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCategoriasLayout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton13)
@@ -328,40 +340,40 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addComponent(jButton17)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel11))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton6)
                             .addComponent(jButton7)
                             .addComponent(jButton8))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton10)
                             .addComponent(jButton11)
                             .addComponent(jButton12))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
                             .addComponent(jButton5)
                             .addComponent(jButton9)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton18)
                             .addComponent(jButton19)
                             .addComponent(jButton20))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton14)
                             .addComponent(jButton15))))
                 .addContainerGap(31, Short.MAX_VALUE))
@@ -405,7 +417,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(163, 163, 163))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(painelCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -416,7 +428,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(25, 25, 25)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
 
@@ -509,6 +521,24 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void adicionarEventosDosBotoes(Container container, JTextField searchField) {
+        for (Component comp : container.getComponents()) {
+            if (comp instanceof JButton) {
+                JButton botao = (JButton) comp;
+                botao.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        searchField.setText(botao.getText());
+                    }
+                });
+            } else if (comp instanceof Container) {
+                // Se for outro painel, faz recursivamente
+                adicionarEventosDosBotoes((Container) comp, searchField);
+            }
+        }
+    }
+
+    
     private void jSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jSearchTextFieldActionPerformed
@@ -617,10 +647,10 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JTextField jSearchTextField;
     private javax.swing.JLabel logoutLabel;
+    private javax.swing.JPanel painelCategorias;
     private javax.swing.JLabel userLabel;
     // End of variables declaration//GEN-END:variables
 }
