@@ -29,9 +29,9 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
 
         jMenuItem1 = new javax.swing.JMenuItem();
         jPanel19 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
+        logoCriarLabel = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        creditsLabel7 = new javax.swing.JLabel();
+        creditsCriarLabel = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         TextFieldRegioncriar = new javax.swing.JTextField();
@@ -58,18 +58,29 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
 
         jPanel19.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoCriarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoCriarLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoCriarLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoCriarLabelMouseClicked(evt);
+            }
+        });
 
         jLabel32.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(74, 103, 147));
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
         jLabel32.setText("Friends");
 
-        creditsLabel7.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        creditsLabel7.setForeground(new java.awt.Color(74, 103, 147));
-        creditsLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
-        creditsLabel7.setText("Credits");
-        creditsLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        creditsCriarLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        creditsCriarLabel.setForeground(new java.awt.Color(74, 103, 147));
+        creditsCriarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
+        creditsCriarLabel.setText("Credits");
+        creditsCriarLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        creditsCriarLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                creditsCriarLabelMouseClicked(evt);
+            }
+        });
 
         jPanel20.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -367,11 +378,11 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel31)
+                .addComponent(logoCriarLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel32)
                 .addGap(18, 18, 18)
-                .addComponent(creditsLabel7)
+                .addComponent(creditsCriarLabel)
                 .addGap(132, 531, Short.MAX_VALUE))
             .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -381,12 +392,12 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel31))
+                        .addComponent(logoCriarLabel))
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(creditsLabel7))))
+                            .addComponent(creditsCriarLabel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -501,6 +512,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabelCreateMouseClicked
 
+    private void creditsCriarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsCriarLabelMouseClicked
+        // Código para ao clicar no credits vá para a tela dos creditos:
+        new Tela_Creditos_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_creditsCriarLabelMouseClicked
+
+    private void logoCriarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoCriarLabelMouseClicked
+        // Código para ao clicar no Logo vá para a tela dos inicial:
+        new Tela_Inicial_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoCriarLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -515,10 +538,9 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldMostPlayedcriar;
     private javax.swing.JTextField TextFieldPlayingTimecriar;
     private javax.swing.JTextField TextFieldRegioncriar;
-    private javax.swing.JLabel creditsLabel7;
+    private javax.swing.JLabel creditsCriarLabel;
     private javax.swing.JComboBox<String> jComboBoxGameStylecriar;
     private javax.swing.JComboBox<String> jComboBoxPlataformscriar;
-    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelCreate;
@@ -531,5 +553,6 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel24;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaSelfDescription;
+    private javax.swing.JLabel logoCriarLabel;
     // End of variables declaration//GEN-END:variables
 }

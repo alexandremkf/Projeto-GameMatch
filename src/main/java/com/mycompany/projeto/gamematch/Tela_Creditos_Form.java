@@ -95,11 +95,8 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-08 21-21-58.png")); // NOI18N
-
         jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(74, 103, 147));
-        jLabel1.setIcon(new javax.swing.ImageIcon("/home/alexandre-matiello/Pictures/Screenshots/Screenshot from 2025-05-09 03-17-33.png")); // NOI18N
         jLabel1.setText("Friends");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -111,7 +108,7 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(728, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

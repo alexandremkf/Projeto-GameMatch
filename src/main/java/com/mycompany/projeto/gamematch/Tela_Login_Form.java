@@ -30,9 +30,9 @@ public class Tela_Login_Form extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel19 = new javax.swing.JPanel();
-        jLabel31 = new javax.swing.JLabel();
+        logoLoginLabel = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        creditsLabel7 = new javax.swing.JLabel();
+        creditsLoginLabel = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         TextFieldEmailLog = new javax.swing.JTextField();
@@ -46,18 +46,29 @@ public class Tela_Login_Form extends javax.swing.JFrame {
 
         jPanel19.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoLoginLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoLoginLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoLoginLabelMouseClicked(evt);
+            }
+        });
 
         jLabel32.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(74, 103, 147));
         jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
         jLabel32.setText("Friends");
 
-        creditsLabel7.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        creditsLabel7.setForeground(new java.awt.Color(74, 103, 147));
-        creditsLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
-        creditsLabel7.setText("Credits");
-        creditsLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        creditsLoginLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        creditsLoginLabel.setForeground(new java.awt.Color(74, 103, 147));
+        creditsLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
+        creditsLoginLabel.setText("Credits");
+        creditsLoginLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        creditsLoginLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                creditsLoginLabelMouseClicked(evt);
+            }
+        });
 
         jPanel20.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -203,11 +214,11 @@ public class Tela_Login_Form extends javax.swing.JFrame {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel31)
+                .addComponent(logoLoginLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel32)
                 .addGap(18, 18, 18)
-                .addComponent(creditsLabel7)
+                .addComponent(creditsLoginLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,12 +230,12 @@ public class Tela_Login_Form extends javax.swing.JFrame {
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel31))
+                        .addComponent(logoLoginLabel))
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(creditsLabel7))))
+                            .addComponent(creditsLoginLabel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -285,6 +296,18 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPasswordFieldLogFocusLost
 
+    private void creditsLoginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLoginLabelMouseClicked
+        // Código para ao clicar no credits vá para a tela dos creditos:
+        new Tela_Creditos_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_creditsLoginLabelMouseClicked
+
+    private void logoLoginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLoginLabelMouseClicked
+        // Código para ao clicar no Logo vá para a tela dos inicial:
+        new Tela_Inicial_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoLoginLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -322,58 +345,16 @@ public class Tela_Login_Form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JlabelLogintelalogin;
-    private javax.swing.JTextField TextFieldEmail1;
-    private javax.swing.JTextField TextFieldEmail2;
-    private javax.swing.JTextField TextFieldEmail3;
     private javax.swing.JTextField TextFieldEmailLog;
-    private javax.swing.JTextField TextFieldName1;
-    private javax.swing.JTextField TextFieldName2;
-    private javax.swing.JTextField TextFieldName3;
-    private javax.swing.JTextField TextFieldPassword;
-    private javax.swing.JTextField TextFieldPassword1;
-    private javax.swing.JTextField TextFieldPassword2;
-    private javax.swing.JTextField TextFieldPassword3;
-    private javax.swing.JTextField TextFieldPassword4;
-    private javax.swing.JTextField TextFieldPassword5;
-    private javax.swing.JLabel creditsLabel4;
-    private javax.swing.JLabel creditsLabel5;
-    private javax.swing.JLabel creditsLabel6;
-    private javax.swing.JLabel creditsLabel7;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel creditsLoginLabel;
     private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPasswordField jPasswordFieldLog;
-    private javax.swing.JLabel jsignUpLabel4;
-    private javax.swing.JLabel jsignUpLabel5;
-    private javax.swing.JLabel jsignUpLabel6;
+    private javax.swing.JLabel logoLoginLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,7 +52,7 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         jstartNowLabel2 = new javax.swing.JLabel();
         jsignUpLabel2 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel19 = new javax.swing.JLabel();
+        logoCadastroLabel = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         creditsLabel3 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -318,7 +318,13 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
 
         jPanel8.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoCadastroLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoCadastroLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoCadastroLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoCadastroLabelMouseClicked(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(74, 103, 147));
@@ -329,7 +335,12 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         creditsLabel3.setForeground(new java.awt.Color(74, 103, 147));
         creditsLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
         creditsLabel3.setText("Credits");
-        creditsLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        creditsLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        creditsLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                creditsLabel3MouseClicked(evt);
+            }
+        });
 
         jPanel9.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -546,7 +557,7 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19)
+                .addComponent(logoCadastroLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addGap(18, 18, 18)
@@ -562,7 +573,7 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel19))
+                        .addComponent(logoCadastroLabel))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -694,6 +705,18 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPasswordFieldCadastroFocusLost
 
+    private void creditsLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabel3MouseClicked
+        // Código para ao clicar no credits vá para a tela dos creditos:
+        new Tela_Creditos_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_creditsLabel3MouseClicked
+
+    private void logoCadastroLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoCadastroLabelMouseClicked
+        // Código para ao clicar no Logo vá para a tela dos inicial:
+        new Tela_Inicial_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoCadastroLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -743,7 +766,6 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel24;
@@ -769,5 +791,6 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jsignUpTelaCadastroLabel;
     private javax.swing.JLabel jstartNowLabel;
     private javax.swing.JLabel jstartNowLabel2;
+    private javax.swing.JLabel logoCadastroLabel;
     // End of variables declaration//GEN-END:variables
 }

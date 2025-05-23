@@ -25,7 +25,6 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
      */
     public Tela_Principal_Form() {
         initComponents();
-        // ... final do initComponents()
         adicionarEventosDosBotoes(painelCategorias, jSearchTextField);
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
     }
@@ -41,8 +40,8 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        creditsLabel = new javax.swing.JLabel();
+        friendsPrincipalLabel = new javax.swing.JLabel();
+        creditsPrincipalLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         painelCategorias = new javax.swing.JPanel();
@@ -86,16 +85,27 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(74, 103, 147));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
-        jLabel1.setText("Friends");
+        friendsPrincipalLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        friendsPrincipalLabel.setForeground(new java.awt.Color(74, 103, 147));
+        friendsPrincipalLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
+        friendsPrincipalLabel.setText("Friends");
+        friendsPrincipalLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        friendsPrincipalLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                friendsPrincipalLabelMouseClicked(evt);
+            }
+        });
 
-        creditsLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
-        creditsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
-        creditsLabel.setText("Credits");
-        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        creditsPrincipalLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        creditsPrincipalLabel.setForeground(new java.awt.Color(74, 103, 147));
+        creditsPrincipalLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
+        creditsPrincipalLabel.setText("Credits");
+        creditsPrincipalLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        creditsPrincipalLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                creditsPrincipalLabelMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -473,9 +483,9 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(friendsPrincipalLabel)
                 .addGap(18, 18, 18)
-                .addComponent(creditsLabel)
+                .addComponent(creditsPrincipalLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutLabel)
                 .addGap(18, 18, 18)
@@ -495,14 +505,14 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logoutLabel)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(userLabel)
-                                    .addGap(8, 8, 8))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(creditsLabel))))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(friendsPrincipalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(creditsPrincipalLabel))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(logoutLabel)
+                                    .addComponent(userLabel))
+                                .addGap(8, 8, 8)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -577,6 +587,18 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
 
+    private void creditsPrincipalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsPrincipalLabelMouseClicked
+        // Código para ao clicar no credits vá para a tela dos creditos:
+        new Tela_Creditos_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_creditsPrincipalLabelMouseClicked
+
+    private void friendsPrincipalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_friendsPrincipalLabelMouseClicked
+        // Código para ao clicar no Friends vá para a tela dos amigos:
+        new Tela_Friends_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_friendsPrincipalLabelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -613,7 +635,8 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel creditsLabel;
+    private javax.swing.JLabel creditsPrincipalLabel;
+    private javax.swing.JLabel friendsPrincipalLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -634,7 +657,6 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
