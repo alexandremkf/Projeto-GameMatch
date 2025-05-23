@@ -124,17 +124,17 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("6-8");
+        jButton6.setText("8-12");
 
         jButton7.setBackground(new java.awt.Color(0, 0, 0));
         jButton7.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("9-12");
+        jButton7.setText("12-15");
 
         jButton8.setBackground(new java.awt.Color(0, 0, 0));
         jButton8.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("13-15");
+        jButton8.setText("15-18");
 
         jLabel7.setBackground(new java.awt.Color(8, 27, 40));
         jLabel7.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
@@ -149,12 +149,17 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jButton11.setBackground(new java.awt.Color(0, 0, 0));
         jButton11.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Play-4");
+        jButton11.setText("Playstation");
 
         jButton12.setBackground(new java.awt.Color(0, 0, 0));
         jButton12.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("Play-5");
+        jButton12.setText("Xbox");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(74, 103, 147));
         jLabel8.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
@@ -259,19 +264,13 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                                         .addComponent(jButton11)
                                         .addGap(18, 18, 18)
                                         .addComponent(jButton12)))
-                                .addGap(247, 247, 247)
+                                .addGap(213, 213, 213)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jButton18)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton19)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton20))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jButton14)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton15))))
+                                        .addComponent(jButton15))
+                                    .addComponent(jLabel9)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -284,13 +283,22 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                                 .addGap(159, 159, 159)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
+                                    .addComponent(jLabel10)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jButton13)
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jButton13)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jButton16))
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jButton18)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jButton19)))
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton16)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton17))
-                                    .addComponent(jLabel10)))
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButton17)
+                                            .addComponent(jButton20)))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jButton4)
                                 .addGap(18, 18, 18)
@@ -300,7 +308,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(275, 275, 275)
                         .addComponent(jLabel3)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +332,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel11))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton6)
@@ -343,8 +351,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton4)
                             .addComponent(jButton5)
-                            .addComponent(jButton9))
-                        .addContainerGap(31, Short.MAX_VALUE))
+                            .addComponent(jButton9)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -356,8 +363,8 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton14)
-                            .addComponent(jButton15))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton15))))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jSearchTextField.setBackground(new java.awt.Color(8, 27, 40));
@@ -477,12 +484,13 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(logoutLabel)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(creditsLabel)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(userLabel)
-                                    .addGap(8, 8, 8))))))
+                                    .addGap(8, 8, 8))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(creditsLabel))))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -534,6 +542,10 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         new Tela_Usuario_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
 
     /**
      * @param args the command line arguments
