@@ -554,7 +554,7 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_friendsUserLabelMouseClicked
 
     private void logoUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoUserLabelMouseClicked
-        // Código para ao clicar no Logo vá para a tela dos inicial:
+        // Código para ao clicar no Logo vá para a tela principal:
         new Tela_Principal_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoUserLabelMouseClicked

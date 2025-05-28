@@ -56,12 +56,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
         creditsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
         creditsLabel.setText("Credits");
-        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        creditsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                creditsLabelMouseClicked(evt);
-            }
-        });
+        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -205,12 +200,6 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         new Tela_Cadastro_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jstartNowLabelMouseClicked
-
-    private void creditsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelMouseClicked
-        // Código para ao clicar no credits vá para a tela dos creditos:
-        new Tela_Creditos_Form().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_creditsLabelMouseClicked
 
     /**
      * @param args the command line arguments

@@ -28,7 +28,7 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        logoGMcredits = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         creditsLabel = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -44,7 +44,13 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoGMcredits.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoGMcredits.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoGMcredits.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoGMcreditsMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(74, 103, 147));
@@ -55,12 +61,7 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
         creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
         creditsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
         creditsLabel.setText("Credits");
-        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        creditsLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                creditsLabelMouseClicked(evt);
-            }
-        });
+        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -159,7 +160,7 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(logoGMcredits)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
@@ -173,7 +174,7 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
+                        .addComponent(logoGMcredits))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -207,11 +208,11 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void creditsLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelMouseClicked
-        // Código para ao clicar no credits vá para a tela dos creditos:
-        new Tela_Creditos_Form().setVisible(true);
+    private void logoGMcreditsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoGMcreditsMouseClicked
+        // Código para ao clicar no Logo vá para a tela principal:
+        new Tela_Principal_Form().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_creditsLabelMouseClicked
+    }//GEN-LAST:event_logoGMcreditsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,10 +257,10 @@ public class Tela_Creditos_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel logoGMcredits;
     // End of variables declaration//GEN-END:variables
 }

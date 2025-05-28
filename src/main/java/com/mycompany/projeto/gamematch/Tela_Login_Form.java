@@ -63,12 +63,7 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         creditsLoginLabel.setForeground(new java.awt.Color(74, 103, 147));
         creditsLoginLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
         creditsLoginLabel.setText("Credits");
-        creditsLoginLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        creditsLoginLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                creditsLoginLabelMouseClicked(evt);
-            }
-        });
+        creditsLoginLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel20.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -295,12 +290,6 @@ public class Tela_Login_Form extends javax.swing.JFrame {
             jPasswordFieldLog.setEchoChar((char) 0); // Remove asteriscos para mostrar texto
         }
     }//GEN-LAST:event_jPasswordFieldLogFocusLost
-
-    private void creditsLoginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLoginLabelMouseClicked
-        // Código para ao clicar no credits vá para a tela dos creditos:
-        new Tela_Creditos_Form().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_creditsLoginLabelMouseClicked
 
     private void logoLoginLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoLoginLabelMouseClicked
         // Código para ao clicar no Logo vá para a tela dos inicial:

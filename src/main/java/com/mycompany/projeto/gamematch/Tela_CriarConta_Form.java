@@ -75,12 +75,7 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         creditsCriarLabel.setForeground(new java.awt.Color(74, 103, 147));
         creditsCriarLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
         creditsCriarLabel.setText("Credits");
-        creditsCriarLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        creditsCriarLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                creditsCriarLabelMouseClicked(evt);
-            }
-        });
+        creditsCriarLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel20.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -511,12 +506,6 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         new Tela_Principal_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabelCreateMouseClicked
-
-    private void creditsCriarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsCriarLabelMouseClicked
-        // Código para ao clicar no credits vá para a tela dos creditos:
-        new Tela_Creditos_Form().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_creditsCriarLabelMouseClicked
 
     private void logoCriarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoCriarLabelMouseClicked
         // Código para ao clicar no Logo vá para a tela dos inicial:
