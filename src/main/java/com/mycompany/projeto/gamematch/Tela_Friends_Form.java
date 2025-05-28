@@ -28,9 +28,9 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        logoGMfriends = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        creditsLabel = new javax.swing.JLabel();
+        creditsLabelfriends = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -38,18 +38,29 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 12, 21));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoGMfriends.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/gm-small.png"))); // NOI18N
+        logoGMfriends.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        logoGMfriends.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoGMfriendsMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(74, 103, 147));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
         jLabel1.setText("Friends");
 
-        creditsLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        creditsLabel.setForeground(new java.awt.Color(74, 103, 147));
-        creditsLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
-        creditsLabel.setText("Credits");
-        creditsLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        creditsLabelfriends.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        creditsLabelfriends.setForeground(new java.awt.Color(74, 103, 147));
+        creditsLabelfriends.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/credits.png"))); // NOI18N
+        creditsLabelfriends.setText("Credits");
+        creditsLabelfriends.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        creditsLabelfriends.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                creditsLabelfriendsMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(14, 47, 86));
 
@@ -89,11 +100,11 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(logoGMfriends)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(creditsLabel)
+                .addComponent(creditsLabelfriends)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -103,12 +114,12 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel2))
+                        .addComponent(logoGMfriends))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(creditsLabel))))
+                            .addComponent(creditsLabelfriends))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -136,6 +147,18 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoGMfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoGMfriendsMouseClicked
+        // Código para ao clicar no Logo vá para a tela principal:
+        new Tela_Principal_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoGMfriendsMouseClicked
+
+    private void creditsLabelfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelfriendsMouseClicked
+        // Código para ao clicar no credits vá para a tela dos creditos:
+        new Tela_Creditos_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_creditsLabelfriendsMouseClicked
 
     /**
      * @param args the command line arguments
@@ -173,11 +196,11 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel creditsLabel;
+    private javax.swing.JLabel creditsLabelfriends;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel logoGMfriends;
     // End of variables declaration//GEN-END:variables
 }
