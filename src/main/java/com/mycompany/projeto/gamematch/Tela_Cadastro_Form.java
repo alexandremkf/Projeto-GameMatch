@@ -4,6 +4,12 @@
  */
 package com.mycompany.projeto.gamematch;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alexandre-matiello
@@ -617,9 +623,45 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jsignUpLabel2MouseClicked
 
     private void jsignUpTelaCadastroLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jsignUpTelaCadastroLabelMouseClicked
-        // Código para ao clicar no sign-up vá para a tela de criar a conta:
-        new Tela_CriarConta_Form().setVisible(true);
-        this.dispose();
+        String nome = TextFieldNome.getText().trim();
+        String email = TextFieldEmail.getText().trim();
+        String username = TextFieldUsername.getText().trim();
+        String senha = new String(jPasswordFieldCadastro.getPassword()).trim();
+
+        // Verificação se os campos estão vazios
+        if (nome.isEmpty() || email.isEmpty() || username.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.WARNING_MESSAGE);
+            return; // Para a execução
+        }
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705"
+            );
+
+            String sql = "INSERT INTO users (name, email, username, password) VALUES ('"
+                + nome + "', '" + email + "', '" + username + "', '" + senha + "')";
+
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(sql);
+
+            stmt.close();
+            con.close();
+
+            // Mensagem de sucesso
+            JOptionPane.showMessageDialog(this, "Cadastro inicial realizado com sucesso!");
+
+            // Código para ao clicar no sign-up vá para a tela de criar a conta:
+            new Tela_CriarConta_Form().setVisible(true);
+            this.dispose();
+        
+        } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Erro ao acessar o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+        System.out.println("Erro SQL: " + e.getMessage());
+        } catch (ClassNotFoundException e) {
+            JOptionPane.showMessageDialog(this, "Driver JDBC não encontrado.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jsignUpTelaCadastroLabelMouseClicked
 
     private void TextFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldUsernameActionPerformed
