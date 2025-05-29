@@ -627,7 +627,13 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         String email = TextFieldEmail.getText().trim();
         String username = TextFieldUsername.getText().trim();
         String senha = new String(jPasswordFieldCadastro.getPassword()).trim();
-
+        
+        // Verificação para não aceitar os valores dos placeholders como informações para o pré user
+        if (nome.equals("Name")) nome = "";
+        if (email.equals("E-mail")) email = "";
+        if (senha.equals("password")) senha = "";
+        if (username.equals("Username")) username = "";
+        
         // Verificação se os campos estão vazios
         if (nome.isEmpty() || email.isEmpty() || username.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.WARNING_MESSAGE);
