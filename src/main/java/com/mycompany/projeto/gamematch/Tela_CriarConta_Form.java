@@ -4,15 +4,20 @@
  */
 package com.mycompany.projeto.gamematch;
 
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  *
  * @author carlo
  */
 public class Tela_CriarConta_Form extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_CriarConta_Form
-     */
+    private String email;
+    
     public Tela_CriarConta_Form() {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
@@ -28,6 +33,12 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldPlayingTimecriar.setFocusable(false);
         jTextAreaSelfDescription.setEditable(false);
         jTextAreaSelfDescription.setFocusable(false);
+    }
+    
+    public Tela_CriarConta_Form(String email) {
+        initComponents();
+        setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        this.email = email;
     }
 
     /**
@@ -550,9 +561,55 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldPlayingTimecriarFocusLost
 
     private void jLabelCreateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCreateMouseClicked
-        // Código para ao clicar no create vá para a tela principal:
-        new Tela_Principal_Form().setVisible(true);
-        this.dispose();
+        String age = TextFieldAgecriar.getText().trim();
+        String region = TextFieldRegioncriar.getText().trim();
+        String platform = jComboBoxPlataformscriar.getSelectedItem().toString().trim();
+        String gameStyle = jComboBoxGameStylecriar.getSelectedItem().toString().trim();
+        String language = TextFieldLanguaguecriar.getText().trim();
+        String mostPlayedGame = TextFieldMostPlayedcriar.getText().trim();
+        String playingTime = TextFieldPlayingTimecriar.getText().trim();
+        String selfDescription = jTextAreaSelfDescription.getText().trim();
+
+        if (age.isEmpty() || region.isEmpty() || platform.isEmpty() || gameStyle.isEmpty() ||
+            language.isEmpty() || mostPlayedGame.isEmpty() || playingTime.isEmpty() || selfDescription.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
+
+            String sql = "UPDATE users SET age = ?, region = ?, platform = ?, game_style = ?, language = ?, most_played_game = ?, playing_time = ?, self_description = ? WHERE email = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, age);
+            pstmt.setString(2, region);
+            pstmt.setString(3, platform);
+            pstmt.setString(4, gameStyle);
+            pstmt.setString(5, language);
+            pstmt.setString(6, mostPlayedGame);
+            pstmt.setString(7, playingTime);
+            pstmt.setString(8, selfDescription);
+            pstmt.setString(9, email); // Agora usando o e-mail como identificador
+
+            int linhasAfetadas = pstmt.executeUpdate();
+            pstmt.close();
+            con.close();
+
+            if (linhasAfetadas > 0) {
+                JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
+                // Redirecionar para a tela principal:
+                new Tela_Principal_Form().setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuário não encontrado para atualizar.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar o cadastro: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jLabelCreateMouseClicked
 
     private void logoCriarLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoCriarLabelMouseClicked

@@ -690,8 +690,9 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Cadastro inicial realizado com sucesso!");
 
             // Código para ao clicar no sign-up vá para a tela de criar a conta:
-            new Tela_CriarConta_Form().setVisible(true);
+            new Tela_CriarConta_Form(email).setVisible(true);
             this.dispose();
+
         
         } catch (SQLException e) {
         JOptionPane.showMessageDialog(this, "Erro ao acessar o banco de dados.", "Erro", JOptionPane.ERROR_MESSAGE);
