@@ -17,7 +17,10 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         jPasswordFieldLog.setEchoChar((char) 0);
-
+        TextFieldEmailLog.setEditable(false);
+        TextFieldEmailLog.setFocusable(false);
+        jPasswordFieldLog.setEditable(false);
+        jPasswordFieldLog.setFocusable(false);
     }
 
     /**
@@ -74,12 +77,18 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         TextFieldEmailLog.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldEmailLog.setText("E-mail");
         TextFieldEmailLog.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldEmailLog.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldEmailLog.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldEmailLogFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldEmailLogFocusLost(evt);
+            }
+        });
+        TextFieldEmailLog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldEmailLogMouseClicked(evt);
             }
         });
         TextFieldEmailLog.addActionListener(new java.awt.event.ActionListener() {
@@ -133,12 +142,18 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         jPasswordFieldLog.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         jPasswordFieldLog.setForeground(new java.awt.Color(74, 103, 147));
         jPasswordFieldLog.setText("password");
+        jPasswordFieldLog.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jPasswordFieldLog.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordFieldLogFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPasswordFieldLogFocusLost(evt);
+            }
+        });
+        jPasswordFieldLog.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordFieldLogMouseClicked(evt);
             }
         });
 
@@ -296,6 +311,20 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         new Tela_Inicial_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoLoginLabelMouseClicked
+
+    private void TextFieldEmailLogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldEmailLogMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldEmailLog.setFocusable(true);
+        TextFieldEmailLog.setEditable(true);
+        TextFieldEmailLog.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldEmailLogMouseClicked
+
+    private void jPasswordFieldLogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldLogMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        jPasswordFieldLog.setFocusable(true);
+        jPasswordFieldLog.setEditable(true);
+        jPasswordFieldLog.requestFocusInWindow();
+    }//GEN-LAST:event_jPasswordFieldLogMouseClicked
 
     /**
      * @param args the command line arguments

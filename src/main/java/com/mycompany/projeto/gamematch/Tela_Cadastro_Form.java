@@ -23,6 +23,14 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         jPasswordFieldCadastro.setEchoChar((char) 0);
+        TextFieldNome.setEditable(false);
+        TextFieldNome.setFocusable(false);
+        TextFieldEmail.setEditable(false);
+        TextFieldEmail.setFocusable(false);
+        jPasswordFieldCadastro.setEditable(false);
+        jPasswordFieldCadastro.setFocusable(false);
+        TextFieldUsername.setEditable(false);
+        TextFieldUsername.setFocusable(false);
     }
 
     /**
@@ -384,6 +392,11 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
                 TextFieldEmailFocusLost(evt);
             }
         });
+        TextFieldEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldEmailMouseClicked(evt);
+            }
+        });
         TextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldEmailActionPerformed(evt);
@@ -395,12 +408,18 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         TextFieldNome.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldNome.setText("Name");
         TextFieldNome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldNomeFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldNomeFocusLost(evt);
+            }
+        });
+        TextFieldNome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldNomeMouseClicked(evt);
             }
         });
 
@@ -410,12 +429,18 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         TextFieldUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         TextFieldUsername.setText("Username");
         TextFieldUsername.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldUsername.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldUsername.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldUsernameFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldUsernameFocusLost(evt);
+            }
+        });
+        TextFieldUsername.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldUsernameMouseClicked(evt);
             }
         });
         TextFieldUsername.addActionListener(new java.awt.event.ActionListener() {
@@ -461,12 +486,18 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         jPasswordFieldCadastro.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         jPasswordFieldCadastro.setForeground(new java.awt.Color(74, 103, 147));
         jPasswordFieldCadastro.setText("password");
+        jPasswordFieldCadastro.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jPasswordFieldCadastro.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jPasswordFieldCadastroFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jPasswordFieldCadastroFocusLost(evt);
+            }
+        });
+        jPasswordFieldCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordFieldCadastroMouseClicked(evt);
             }
         });
         jPasswordFieldCadastro.addActionListener(new java.awt.event.ActionListener() {
@@ -753,6 +784,34 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
         new Tela_Inicial_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoCadastroLabelMouseClicked
+
+    private void TextFieldNomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldNomeMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldNome.setFocusable(true);
+        TextFieldNome.setEditable(true);
+        TextFieldNome.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldNomeMouseClicked
+
+    private void TextFieldEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldEmailMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldEmail.setFocusable(true);
+        TextFieldEmail.setEditable(true);
+        TextFieldEmail.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldEmailMouseClicked
+
+    private void jPasswordFieldCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordFieldCadastroMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        jPasswordFieldCadastro.setFocusable(true);
+        jPasswordFieldCadastro.setEditable(true);
+        jPasswordFieldCadastro.requestFocusInWindow();
+    }//GEN-LAST:event_jPasswordFieldCadastroMouseClicked
+
+    private void TextFieldUsernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldUsernameMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldUsername.setFocusable(true);
+        TextFieldUsername.setEditable(true);
+        TextFieldUsername.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldUsernameMouseClicked
 
     /**
      * @param args the command line arguments

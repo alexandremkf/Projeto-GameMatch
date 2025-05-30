@@ -16,6 +16,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     public Tela_CriarConta_Form() {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        TextFieldAgecriar.setEditable(false);
+        TextFieldAgecriar.setFocusable(false);
+        TextFieldRegioncriar.setEditable(false);
+        TextFieldRegioncriar.setFocusable(false);
+        TextFieldLanguaguecriar.setEditable(false);
+        TextFieldLanguaguecriar.setFocusable(false);
+        TextFieldMostPlayedcriar.setEditable(false);
+        TextFieldMostPlayedcriar.setFocusable(false);
+        TextFieldPlayingTimecriar.setEditable(false);
+        TextFieldPlayingTimecriar.setFocusable(false);
+        jTextAreaSelfDescription.setEditable(false);
+        jTextAreaSelfDescription.setFocusable(false);
     }
 
     /**
@@ -86,12 +98,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldRegioncriar.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldRegioncriar.setText("Region");
         TextFieldRegioncriar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldRegioncriar.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldRegioncriar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldRegioncriarFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldRegioncriarFocusLost(evt);
+            }
+        });
+        TextFieldRegioncriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldRegioncriarMouseClicked(evt);
             }
         });
         TextFieldRegioncriar.addActionListener(new java.awt.event.ActionListener() {
@@ -105,12 +123,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldAgecriar.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldAgecriar.setText("Age");
         TextFieldAgecriar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldAgecriar.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldAgecriar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldAgecriarFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldAgecriarFocusLost(evt);
+            }
+        });
+        TextFieldAgecriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldAgecriarMouseClicked(evt);
             }
         });
         TextFieldAgecriar.addActionListener(new java.awt.event.ActionListener() {
@@ -179,12 +203,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldLanguaguecriar.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldLanguaguecriar.setText("Language");
         TextFieldLanguaguecriar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldLanguaguecriar.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldLanguaguecriar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldLanguaguecriarFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldLanguaguecriarFocusLost(evt);
+            }
+        });
+        TextFieldLanguaguecriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldLanguaguecriarMouseClicked(evt);
             }
         });
         TextFieldLanguaguecriar.addActionListener(new java.awt.event.ActionListener() {
@@ -203,12 +233,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldMostPlayedcriar.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldMostPlayedcriar.setText("Most Played Game");
         TextFieldMostPlayedcriar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldMostPlayedcriar.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldMostPlayedcriar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldMostPlayedcriarFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldMostPlayedcriarFocusLost(evt);
+            }
+        });
+        TextFieldMostPlayedcriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldMostPlayedcriarMouseClicked(evt);
             }
         });
         TextFieldMostPlayedcriar.addActionListener(new java.awt.event.ActionListener() {
@@ -227,12 +263,18 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldPlayingTimecriar.setForeground(new java.awt.Color(74, 103, 147));
         TextFieldPlayingTimecriar.setText("Playing Time");
         TextFieldPlayingTimecriar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TextFieldPlayingTimecriar.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         TextFieldPlayingTimecriar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 TextFieldPlayingTimecriarFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 TextFieldPlayingTimecriarFocusLost(evt);
+            }
+        });
+        TextFieldPlayingTimecriar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TextFieldPlayingTimecriarMouseClicked(evt);
             }
         });
         TextFieldPlayingTimecriar.addActionListener(new java.awt.event.ActionListener() {
@@ -246,6 +288,12 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         jTextAreaSelfDescription.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         jTextAreaSelfDescription.setForeground(new java.awt.Color(74, 103, 147));
         jTextAreaSelfDescription.setRows(5);
+        jTextAreaSelfDescription.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextAreaSelfDescription.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextAreaSelfDescriptionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextAreaSelfDescription);
 
         JlabelPlataforms.setBackground(new java.awt.Color(8, 27, 40));
@@ -512,6 +560,48 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         new Tela_Inicial_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoCriarLabelMouseClicked
+
+    private void TextFieldAgecriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldAgecriarMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldAgecriar.setFocusable(true);
+        TextFieldAgecriar.setEditable(true);
+        TextFieldAgecriar.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldAgecriarMouseClicked
+
+    private void TextFieldRegioncriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldRegioncriarMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldRegioncriar.setFocusable(true);
+        TextFieldRegioncriar.setEditable(true);
+        TextFieldRegioncriar.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldRegioncriarMouseClicked
+
+    private void TextFieldLanguaguecriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldLanguaguecriarMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldLanguaguecriar.setFocusable(true);
+        TextFieldLanguaguecriar.setEditable(true);
+        TextFieldLanguaguecriar.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldLanguaguecriarMouseClicked
+
+    private void TextFieldMostPlayedcriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldMostPlayedcriarMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldMostPlayedcriar.setFocusable(true);
+        TextFieldMostPlayedcriar.setEditable(true);
+        TextFieldMostPlayedcriar.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldMostPlayedcriarMouseClicked
+
+    private void TextFieldPlayingTimecriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldPlayingTimecriarMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        TextFieldPlayingTimecriar.setFocusable(true);
+        TextFieldPlayingTimecriar.setEditable(true);
+        TextFieldPlayingTimecriar.requestFocusInWindow();
+    }//GEN-LAST:event_TextFieldPlayingTimecriarMouseClicked
+
+    private void jTextAreaSelfDescriptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextAreaSelfDescriptionMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        jTextAreaSelfDescription.setFocusable(true);
+        jTextAreaSelfDescription.setEditable(true);
+        jTextAreaSelfDescription.requestFocusInWindow();
+    }//GEN-LAST:event_jTextAreaSelfDescriptionMouseClicked
 
     /**
      * @param args the command line arguments

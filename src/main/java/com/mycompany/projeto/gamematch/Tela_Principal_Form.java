@@ -27,6 +27,8 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         initComponents();
         adicionarEventosDosBotoes(painelCategorias, jSearchTextField);
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        jSearchTextField.setEditable(false);
+        jSearchTextField.setFocusable(false);
     }
 
     /**
@@ -394,12 +396,18 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jSearchTextField.setForeground(new java.awt.Color(74, 103, 147));
         jSearchTextField.setText("Search...");
         jSearchTextField.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jSearchTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jSearchTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jSearchTextFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jSearchTextFieldFocusLost(evt);
+            }
+        });
+        jSearchTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSearchTextFieldMouseClicked(evt);
             }
         });
         jSearchTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -598,6 +606,13 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         new Tela_Friends_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_friendsPrincipalLabelMouseClicked
+
+    private void jSearchTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchTextFieldMouseClicked
+        // Código para tirar esse foco que o campo de texto recebia.
+        jSearchTextField.setFocusable(true);
+        jSearchTextField.setEditable(true);
+        jSearchTextField.requestFocusInWindow();
+    }//GEN-LAST:event_jSearchTextFieldMouseClicked
 
     /**
      * @param args the command line arguments
