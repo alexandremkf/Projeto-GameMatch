@@ -39,6 +39,7 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jstartNowLabel = new javax.swing.JLabel();
         jsignUpLabel = new javax.swing.JLabel();
+        loginInicial = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -149,6 +150,14 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
             }
         });
 
+        loginInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/LoginInicial.png"))); // NOI18N
+        loginInicial.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginInicial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginInicialMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -161,6 +170,8 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(creditsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginInicial)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jsignUpLabel)
                 .addGap(29, 29, 29))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -173,13 +184,16 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jsignUpLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(creditsLabel)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jsignUpLabel)))
+                        .addGap(33, 33, 33)
+                        .addComponent(loginInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -200,6 +214,12 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
         new Tela_Cadastro_Form().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jstartNowLabelMouseClicked
+
+    private void loginInicialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginInicialMouseClicked
+        // Código para clicar no login e ir para tela de logar na conta.
+        new Tela_Login_Form().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_loginInicialMouseClicked
 
     /**
      * @param args the command line arguments
@@ -249,5 +269,6 @@ public class Tela_Inicial_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel jsignUpLabel;
     private javax.swing.JLabel jstartNowLabel;
+    private javax.swing.JLabel loginInicial;
     // End of variables declaration//GEN-END:variables
 }
