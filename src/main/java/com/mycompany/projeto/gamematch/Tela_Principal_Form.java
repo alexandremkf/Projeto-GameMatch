@@ -7,12 +7,6 @@
 
 package com.mycompany.projeto.gamematch;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JTextField;
 
 /**
  *
@@ -696,7 +690,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     private void jSearchTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jSearchTextFieldFocusLost
         // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
         if (jSearchTextField.getText().isEmpty()) {
-        jSearchTextField.setText("Search...");
+            jSearchTextField.setText("Search...");
         }
     }//GEN-LAST:event_jSearchTextFieldFocusLost
 
@@ -730,9 +724,9 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
     private void jSearchTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchTextFieldMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        jSearchTextField.setFocusable(true);
-        jSearchTextField.setEditable(true);
-        jSearchTextField.requestFocusInWindow();
+        if (jSearchTextField.getText().equals("Search...")) {
+            jSearchTextField.setText("");
+        }
     }//GEN-LAST:event_jSearchTextFieldMouseClicked
 
     private void btnFPSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFPSMouseClicked
