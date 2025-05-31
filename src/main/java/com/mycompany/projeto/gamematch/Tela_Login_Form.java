@@ -296,7 +296,7 @@ public class Tela_Login_Form extends javax.swing.JFrame {
 
             if (rs.next()) {
                 JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
-
+                
                 // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
                 new Tela_Principal_Form(email).setVisible(true);
                 this.dispose(); // fecha a tela de login
@@ -312,7 +312,7 @@ public class Tela_Login_Form extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_JlabelLogintelaloginMouseClicked
-
+    
     private void TextFieldEmailLogFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldEmailLogFocusGained
         // Código para sumir o PlaceHolder ao clicar para digitar.
         if (TextFieldEmailLog.getText().equals("E-mail")) {

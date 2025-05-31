@@ -36,7 +36,6 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         initComponents();
         this.email = email;
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
-        // Aqui posso usar o email para buscar dados no banco e exibir na tela principal
     }
     
     
@@ -591,7 +590,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
     private void userLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userLabelMouseClicked
         // Código para ao clicar no símbolo do user vá para a tela do usuário:
-        new Tela_Usuario_Form().setVisible(true);
+        new Tela_Usuario_Form(email).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
 
@@ -601,13 +600,13 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
     private void creditsPrincipalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsPrincipalLabelMouseClicked
         // Código para ao clicar no credits vá para a tela dos creditos:
-        new Tela_Creditos_Form().setVisible(true);
+        new Tela_Creditos_Form(email).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_creditsPrincipalLabelMouseClicked
 
     private void friendsPrincipalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_friendsPrincipalLabelMouseClicked
         // Código para ao clicar no Friends vá para a tela dos amigos:
-        new Tela_Friends_Form().setVisible(true);
+        new Tela_Friends_Form(email).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_friendsPrincipalLabelMouseClicked
 

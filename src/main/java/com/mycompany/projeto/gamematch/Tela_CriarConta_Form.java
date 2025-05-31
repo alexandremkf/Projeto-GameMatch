@@ -599,7 +599,7 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
             if (linhasAfetadas > 0) {
                 JOptionPane.showMessageDialog(this, "Conta criada com sucesso!");
                 // Redirecionar para a tela principal:
-                new Tela_Principal_Form().setVisible(true);
+                new Tela_Principal_Form(email).setVisible(true);
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Usuário não encontrado para atualizar.", "Erro", JOptionPane.ERROR_MESSAGE);
