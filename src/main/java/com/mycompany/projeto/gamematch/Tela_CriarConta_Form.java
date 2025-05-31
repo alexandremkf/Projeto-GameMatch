@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  *
@@ -21,19 +20,32 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     public Tela_CriarConta_Form() {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        
+        TextFieldAgecriar.setText("Age");
         TextFieldAgecriar.setEditable(false);
         TextFieldAgecriar.setFocusable(false);
+        
+        TextFieldRegioncriar.setText("Region");
         TextFieldRegioncriar.setEditable(false);
         TextFieldRegioncriar.setFocusable(false);
+        
+        TextFieldLanguaguecriar.setText("Language");
         TextFieldLanguaguecriar.setEditable(false);
         TextFieldLanguaguecriar.setFocusable(false);
+        
+        TextFieldMostPlayedcriar.setText("Most Played Game");
         TextFieldMostPlayedcriar.setEditable(false);
         TextFieldMostPlayedcriar.setFocusable(false);
+        
+        TextFieldPlayingTimecriar.setText("Playing Time");
         TextFieldPlayingTimecriar.setEditable(false);
         TextFieldPlayingTimecriar.setFocusable(false);
+        
+        jTextAreaSelfDescription.setText("Self Description");
         jTextAreaSelfDescription.setEditable(false);
         jTextAreaSelfDescription.setFocusable(false);
-        
+
+        // Quebra de linhas no text area:
         jTextAreaSelfDescription.setLineWrap(true);
         jTextAreaSelfDescription.setWrapStyleWord(true);
     }
@@ -59,7 +71,7 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         jLabel32 = new javax.swing.JLabel();
         creditsCriarLabel = new javax.swing.JLabel();
         jPanel20 = new javax.swing.JPanel();
-        jPanel21 = new javax.swing.JPanel();
+        painelCriarConta = new javax.swing.JPanel();
         TextFieldRegioncriar = new javax.swing.JTextField();
         TextFieldAgecriar = new javax.swing.JTextField();
         jPanel22 = new javax.swing.JPanel();
@@ -105,7 +117,7 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
 
         jPanel20.setBackground(new java.awt.Color(14, 47, 86));
 
-        jPanel21.setBackground(new java.awt.Color(0, 12, 21));
+        painelCriarConta.setBackground(new java.awt.Color(0, 12, 21));
 
         TextFieldRegioncriar.setBackground(new java.awt.Color(8, 27, 40));
         TextFieldRegioncriar.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
@@ -325,82 +337,82 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         JlabelSelfDescription.setForeground(new java.awt.Color(74, 103, 147));
         JlabelSelfDescription.setText("Self Description:");
 
-        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
-        jPanel21.setLayout(jPanel21Layout);
-        jPanel21Layout.setHorizontalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelCriarContaLayout = new javax.swing.GroupLayout(painelCriarConta);
+        painelCriarConta.setLayout(painelCriarContaLayout);
+        painelCriarContaLayout.setHorizontalGroup(
+            painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCriarContaLayout.createSequentialGroup()
+                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(painelCriarContaLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addGroup(painelCriarContaLayout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                        .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCriarContaLayout.createSequentialGroup()
                                 .addComponent(TextFieldRegioncriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                                 .addComponent(TextFieldMostPlayedcriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCriarContaLayout.createSequentialGroup()
                                 .addComponent(TextFieldAgecriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(TextFieldLanguaguecriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelCriarContaLayout.createSequentialGroup()
+                                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBoxPlataformscriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(JlabelPlataforms)
                                     .addComponent(jComboBoxGameStylecriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(JlabelGameStylecriar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TextFieldPlayingTimecriar)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                                     .addComponent(JlabelSelfDescription)))
                             .addComponent(jPanel22, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE))))
                 .addGap(0, 35, Short.MAX_VALUE))
-            .addGroup(jPanel21Layout.createSequentialGroup()
+            .addGroup(painelCriarContaLayout.createSequentialGroup()
                 .addGap(336, 336, 336)
                 .addComponent(jLabelCreate)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel21Layout.setVerticalGroup(
-            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel21Layout.createSequentialGroup()
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel21Layout.createSequentialGroup()
+        painelCriarContaLayout.setVerticalGroup(
+            painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelCriarContaLayout.createSequentialGroup()
+                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelCriarContaLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(jLabel9))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addGroup(painelCriarContaLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
+                    .addGroup(painelCriarContaLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(47, 47, 47)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFieldAgecriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldLanguaguecriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFieldRegioncriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldMostPlayedcriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(JlabelPlataforms)
                     .addComponent(TextFieldPlayingTimecriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                .addGroup(painelCriarContaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCriarContaLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxPlataformscriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(JlabelGameStylecriar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBoxGameStylecriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel21Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCriarContaLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(JlabelSelfDescription)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -418,14 +430,14 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(101, 101, 101))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCriarConta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
@@ -494,72 +506,80 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldPlayingTimecriarActionPerformed
 
     private void TextFieldAgecriarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldAgecriarFocusGained
-        // Código para sumir o PlaceHolder ao clicar para digitar.
         if (TextFieldAgecriar.getText().equals("Age")) {
-        TextFieldAgecriar.setText("");
+            TextFieldAgecriar.setText("");
         }
     }//GEN-LAST:event_TextFieldAgecriarFocusGained
 
     private void TextFieldAgecriarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldAgecriarFocusLost
         // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
         if (TextFieldAgecriar.getText().isEmpty()) {
-        TextFieldAgecriar.setText("Age");
+            TextFieldAgecriar.setText("Age");
+            TextFieldAgecriar.setEditable(false);
+            TextFieldAgecriar.setFocusable(false);
         }
     }//GEN-LAST:event_TextFieldAgecriarFocusLost
 
     private void TextFieldRegioncriarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldRegioncriarFocusGained
         // Código para sumir o PlaceHolder ao clicar para digitar.
         if (TextFieldRegioncriar.getText().equals("Region")) {
-        TextFieldRegioncriar.setText("");
+            TextFieldRegioncriar.setText("");
         }
     }//GEN-LAST:event_TextFieldRegioncriarFocusGained
 
     private void TextFieldRegioncriarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldRegioncriarFocusLost
         // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
         if (TextFieldRegioncriar.getText().isEmpty()) {
-        TextFieldRegioncriar.setText("Region");
+            TextFieldRegioncriar.setText("Region");
+            TextFieldRegioncriar.setEditable(false);
+            TextFieldRegioncriar.setFocusable(false);
         }
     }//GEN-LAST:event_TextFieldRegioncriarFocusLost
 
     private void TextFieldLanguaguecriarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldLanguaguecriarFocusGained
         // Código para sumir o PlaceHolder ao clicar para digitar.
         if (TextFieldLanguaguecriar.getText().equals("Language")) {
-        TextFieldLanguaguecriar.setText("");
+            TextFieldLanguaguecriar.setText("");
         }
     }//GEN-LAST:event_TextFieldLanguaguecriarFocusGained
 
     private void TextFieldLanguaguecriarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldLanguaguecriarFocusLost
         // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
         if (TextFieldLanguaguecriar.getText().isEmpty()) {
-        TextFieldLanguaguecriar.setText("Language");
+            TextFieldLanguaguecriar.setText("Language");
+            TextFieldLanguaguecriar.setEditable(false);
+            TextFieldLanguaguecriar.setFocusable(false);
         }
     }//GEN-LAST:event_TextFieldLanguaguecriarFocusLost
 
     private void TextFieldMostPlayedcriarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldMostPlayedcriarFocusGained
-        // Código para sumir o PlaceHolder ao clicar para digitar.
         if (TextFieldMostPlayedcriar.getText().equals("Most Played Game")) {
-        TextFieldMostPlayedcriar.setText("");
+            TextFieldMostPlayedcriar.setText("");
         }
     }//GEN-LAST:event_TextFieldMostPlayedcriarFocusGained
 
     private void TextFieldMostPlayedcriarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldMostPlayedcriarFocusLost
         // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
         if (TextFieldMostPlayedcriar.getText().isEmpty()) {
-        TextFieldMostPlayedcriar.setText("Most Played Game");
+            TextFieldMostPlayedcriar.setText("Most Played Game");
+            TextFieldMostPlayedcriar.setEditable(false);
+            TextFieldMostPlayedcriar.setFocusable(false);
         }
     }//GEN-LAST:event_TextFieldMostPlayedcriarFocusLost
 
     private void TextFieldPlayingTimecriarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldPlayingTimecriarFocusGained
-         // Código para sumir o PlaceHolder ao clicar para digitar.
+        // Código para sumir o PlaceHolder ao clicar para digitar.
         if (TextFieldPlayingTimecriar.getText().equals("Playing Time")) {
-        TextFieldPlayingTimecriar.setText("");
+            TextFieldPlayingTimecriar.setText("");
         }
     }//GEN-LAST:event_TextFieldPlayingTimecriarFocusGained
 
     private void TextFieldPlayingTimecriarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldPlayingTimecriarFocusLost
-          // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
+        // Código para permanecer o PlaceHolder enquanto estiver vazio a entrada.
         if (TextFieldPlayingTimecriar.getText().isEmpty()) {
-        TextFieldPlayingTimecriar.setText("Playing Time");
+            TextFieldPlayingTimecriar.setText("Playing Time");
+            TextFieldPlayingTimecriar.setEditable(false);
+            TextFieldPlayingTimecriar.setFocusable(false);
         }
     }//GEN-LAST:event_TextFieldPlayingTimecriarFocusLost
 
@@ -623,44 +643,56 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
 
     private void TextFieldAgecriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldAgecriarMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        TextFieldAgecriar.setFocusable(true);
-        TextFieldAgecriar.setEditable(true);
-        TextFieldAgecriar.requestFocusInWindow();
+        if (!TextFieldAgecriar.isEditable()) {
+            TextFieldAgecriar.setEditable(true);
+            TextFieldAgecriar.setFocusable(true);
+            TextFieldAgecriar.requestFocusInWindow();
+        }
     }//GEN-LAST:event_TextFieldAgecriarMouseClicked
 
     private void TextFieldRegioncriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldRegioncriarMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        TextFieldRegioncriar.setFocusable(true);
-        TextFieldRegioncriar.setEditable(true);
-        TextFieldRegioncriar.requestFocusInWindow();
+        if (!TextFieldRegioncriar.isEditable()) {
+            TextFieldRegioncriar.setEditable(true);
+            TextFieldRegioncriar.setFocusable(true);
+            TextFieldRegioncriar.requestFocusInWindow();
+        }
     }//GEN-LAST:event_TextFieldRegioncriarMouseClicked
 
     private void TextFieldLanguaguecriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldLanguaguecriarMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        TextFieldLanguaguecriar.setFocusable(true);
-        TextFieldLanguaguecriar.setEditable(true);
-        TextFieldLanguaguecriar.requestFocusInWindow();
+        if (!TextFieldLanguaguecriar.isEditable()) {
+            TextFieldLanguaguecriar.setEditable(true);
+            TextFieldLanguaguecriar.setFocusable(true);
+            TextFieldLanguaguecriar.requestFocusInWindow();
+        }
     }//GEN-LAST:event_TextFieldLanguaguecriarMouseClicked
 
     private void TextFieldMostPlayedcriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldMostPlayedcriarMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        TextFieldMostPlayedcriar.setFocusable(true);
-        TextFieldMostPlayedcriar.setEditable(true);
-        TextFieldMostPlayedcriar.requestFocusInWindow();
+        if (!TextFieldMostPlayedcriar.isEditable()) {
+            TextFieldMostPlayedcriar.setEditable(true);
+            TextFieldMostPlayedcriar.setFocusable(true);
+            TextFieldMostPlayedcriar.requestFocusInWindow();
+        }
     }//GEN-LAST:event_TextFieldMostPlayedcriarMouseClicked
 
     private void TextFieldPlayingTimecriarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TextFieldPlayingTimecriarMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        TextFieldPlayingTimecriar.setFocusable(true);
-        TextFieldPlayingTimecriar.setEditable(true);
-        TextFieldPlayingTimecriar.requestFocusInWindow();
+        if (!TextFieldPlayingTimecriar.isEditable()) {
+            TextFieldPlayingTimecriar.setEditable(true);
+            TextFieldPlayingTimecriar.setFocusable(true);
+            TextFieldPlayingTimecriar.requestFocusInWindow();
+        }
     }//GEN-LAST:event_TextFieldPlayingTimecriarMouseClicked
 
     private void jTextAreaSelfDescriptionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextAreaSelfDescriptionMouseClicked
         // Código para tirar esse foco que o campo de texto recebia.
-        jTextAreaSelfDescription.setFocusable(true);
-        jTextAreaSelfDescription.setEditable(true);
-        jTextAreaSelfDescription.requestFocusInWindow();
+        if (!jTextAreaSelfDescription.isEditable()) {
+            jTextAreaSelfDescription.setEditable(true);
+            jTextAreaSelfDescription.setFocusable(true);
+            jTextAreaSelfDescription.requestFocusInWindow();
+        }
     }//GEN-LAST:event_jTextAreaSelfDescriptionMouseClicked
 
     /**
@@ -686,12 +718,12 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel20;
-    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaSelfDescription;
     private javax.swing.JLabel logoCriarLabel;
+    private javax.swing.JPanel painelCriarConta;
     // End of variables declaration//GEN-END:variables
 }
