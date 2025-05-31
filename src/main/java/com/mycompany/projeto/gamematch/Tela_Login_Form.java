@@ -4,6 +4,12 @@
  */
 package com.mycompany.projeto.gamematch;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author carlo
@@ -269,9 +275,42 @@ public class Tela_Login_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldEmailLogActionPerformed
 
     private void JlabelLogintelaloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlabelLogintelaloginMouseClicked
-    // Código para ao clicar no login vá para a tela principal:
-        new Tela_Principal_Form().setVisible(true);
-        this.dispose();
+        String email = TextFieldEmailLog.getText().trim();
+        String senha = new String(jPasswordFieldLog.getPassword()).trim();
+
+        if (email.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
+
+            String sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, email);
+            pstmt.setString(2, senha);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
+
+                // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
+                new Tela_Principal_Form(email).setVisible(true);
+                this.dispose(); // fecha a tela de login
+            } else {
+                JOptionPane.showMessageDialog(this, "E-mail ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
+            rs.close();
+            pstmt.close();
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao fazer login: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_JlabelLogintelaloginMouseClicked
 
     private void TextFieldEmailLogFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TextFieldEmailLogFocusGained
