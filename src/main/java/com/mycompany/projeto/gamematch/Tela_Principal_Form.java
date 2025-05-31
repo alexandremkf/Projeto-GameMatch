@@ -26,11 +26,12 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         initComponents();
         adicionarEventosDosBotoes(painelCategorias, jSearchTextField);
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        
+        // Comportamento inicial do campo Search
+        jSearchTextField.setText("Search...");
         jSearchTextField.setEditable(false);
         jSearchTextField.setFocusable(false);
     }
-    
-    
 
     public Tela_Principal_Form(String email) {
         initComponents();
@@ -569,9 +570,15 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jSearchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jSearchTextFieldFocusGained
-       // Código para sumir o PlaceHolder ao clicar para digitar.
-        if (jSearchTextField.getText().equals("Search...")) {
-        jSearchTextField.setText("");
+        // Código para sumir o PlaceHolder ao clicar para digitar.
+        if (!jSearchTextField.isEditable()) {
+            jSearchTextField.setEditable(true);
+            jSearchTextField.setFocusable(true);
+            jSearchTextField.requestFocusInWindow();
+
+            if (jSearchTextField.getText().equals("Search...")) {
+                jSearchTextField.setText("");
+            }
         }
     }//GEN-LAST:event_jSearchTextFieldFocusGained
 
