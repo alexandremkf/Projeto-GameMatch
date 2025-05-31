@@ -33,6 +33,9 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         TextFieldPlayingTimecriar.setFocusable(false);
         jTextAreaSelfDescription.setEditable(false);
         jTextAreaSelfDescription.setFocusable(false);
+        
+        jTextAreaSelfDescription.setLineWrap(true);
+        jTextAreaSelfDescription.setWrapStyleWord(true);
     }
     
     public Tela_CriarConta_Form(String email) {

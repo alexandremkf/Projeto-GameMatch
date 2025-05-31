@@ -27,6 +27,10 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
 
         // Carrega os dados do usuário
         carregarDadosUsuario();
+        
+        jTextAreaSelfDescription.setLineWrap(true);
+        jTextAreaSelfDescription.setWrapStyleWord(true);
+        
         setCamposEditaveis(false); // esse método controla habilitação
 
     }
