@@ -622,7 +622,43 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     private void savebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savebtnMouseClicked
         // Código para salvar os dados no banco aqui...
         
-        setCamposEditaveis(false);  // Desativa edição depois de salvar
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
+
+            String sql = "UPDATE users SET age = ?, region = ?, platform = ?, game_style = ?, language = ?, most_played_game = ?, playing_time = ?, self_description = ? WHERE email = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+
+            // Pegando os valores dos campos
+            pstmt.setString(1, TextFieldAgecriar.getText());
+            pstmt.setString(2, TextFieldRegioncriar.getText());
+            pstmt.setString(3, (String) jComboBoxPlataformscriar.getSelectedItem());
+            pstmt.setString(4, (String) jComboBoxGameStylecriar.getSelectedItem());
+            pstmt.setString(5, TextFieldLanguagecriar.getText());
+            pstmt.setString(6, TextFieldMostPlayedcriar.getText());
+            pstmt.setString(7, TextFieldPlayingTimecriar.getText());
+            pstmt.setString(8, jTextAreaSelfDescription.getText());
+
+            // Grantindo que o email foi armazenado nesta tela (como uma variável)
+            pstmt.setString(9, this.email); 
+
+            int linhasAfetadas = pstmt.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Não foi possível atualizar os dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
+            pstmt.close();
+            con.close();
+
+            setCamposEditaveis(false);  // Desativa edição depois de salvar
+        
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar dados: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_savebtnMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
