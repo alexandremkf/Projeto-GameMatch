@@ -550,11 +550,17 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 botao.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        // Garante que o campo esteja ativado ao clicar no botão de sugestão
+                        if (!searchField.isEditable()) {
+                            searchField.setEditable(true);
+                            searchField.setFocusable(true);
+                        }
+
                         searchField.setText(botao.getText());
+                        searchField.requestFocusInWindow();
                     }
                 });
             } else if (comp instanceof Container) {
-                // Se for outro painel, faz recursivamente
                 adicionarEventosDosBotoes((Container) comp, searchField);
             }
         }
