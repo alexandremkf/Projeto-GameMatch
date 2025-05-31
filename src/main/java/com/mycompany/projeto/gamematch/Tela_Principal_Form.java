@@ -24,7 +24,6 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     
     public Tela_Principal_Form() {
         initComponents();
-        adicionarEventosDosBotoes(painelCategorias, jSearchTextField);
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
         // Comportamento inicial do campo Search
@@ -32,13 +31,12 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jSearchTextField.setEditable(false);
         jSearchTextField.setFocusable(false);
     }
-
+    
     public Tela_Principal_Form(String email) {
         initComponents();
         this.email = email;
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
     }
-    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -53,32 +51,32 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         painelCategorias = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnFPS = new javax.swing.JButton();
+        btnRPG = new javax.swing.JButton();
+        btnStrategyGames = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btn8a12 = new javax.swing.JButton();
+        btn12a15 = new javax.swing.JButton();
+        btn15a18 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        btnPC = new javax.swing.JButton();
+        btnPlaystation = new javax.swing.JButton();
+        btnXbox = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btnSP = new javax.swing.JButton();
+        btnMG = new javax.swing.JButton();
+        btnRJ = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        btnPortuguês = new javax.swing.JButton();
+        btnEnglish = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        jButton13 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        btnValorant = new javax.swing.JButton();
+        btnMinecraft = new javax.swing.JButton();
+        btnFortnite = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton20 = new javax.swing.JButton();
+        btnManhã = new javax.swing.JButton();
+        btnTarde = new javax.swing.JButton();
+        btnNoite = new javax.swing.JButton();
         jSearchTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
@@ -129,63 +127,117 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(74, 103, 147));
         jLabel4.setText("Game style:");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("FPS Games");
+        btnFPS.setBackground(new java.awt.Color(0, 0, 0));
+        btnFPS.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnFPS.setForeground(new java.awt.Color(255, 255, 255));
+        btnFPS.setText("FPS");
+        btnFPS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFPS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFPSMouseClicked(evt);
+            }
+        });
 
-        jButton2.setBackground(new java.awt.Color(0, 0, 0));
-        jButton2.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("RPG");
+        btnRPG.setBackground(new java.awt.Color(0, 0, 0));
+        btnRPG.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnRPG.setForeground(new java.awt.Color(255, 255, 255));
+        btnRPG.setText("RPG");
+        btnRPG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRPG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRPGMouseClicked(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Strategy Games");
+        btnStrategyGames.setBackground(new java.awt.Color(0, 0, 0));
+        btnStrategyGames.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnStrategyGames.setForeground(new java.awt.Color(255, 255, 255));
+        btnStrategyGames.setText("Strategy Games");
+        btnStrategyGames.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnStrategyGames.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStrategyGamesMouseClicked(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(8, 27, 40));
         jLabel5.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(74, 103, 147));
         jLabel5.setText("Age:");
 
-        jButton6.setBackground(new java.awt.Color(0, 0, 0));
-        jButton6.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("8-12");
+        btn8a12.setBackground(new java.awt.Color(0, 0, 0));
+        btn8a12.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btn8a12.setForeground(new java.awt.Color(255, 255, 255));
+        btn8a12.setText("8-12");
+        btn8a12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn8a12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn8a12MouseClicked(evt);
+            }
+        });
 
-        jButton7.setBackground(new java.awt.Color(0, 0, 0));
-        jButton7.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("12-15");
+        btn12a15.setBackground(new java.awt.Color(0, 0, 0));
+        btn12a15.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btn12a15.setForeground(new java.awt.Color(255, 255, 255));
+        btn12a15.setText("12-15");
+        btn12a15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn12a15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn12a15MouseClicked(evt);
+            }
+        });
 
-        jButton8.setBackground(new java.awt.Color(0, 0, 0));
-        jButton8.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("15-18");
+        btn15a18.setBackground(new java.awt.Color(0, 0, 0));
+        btn15a18.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btn15a18.setForeground(new java.awt.Color(255, 255, 255));
+        btn15a18.setText("15-18");
+        btn15a18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn15a18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn15a18MouseClicked(evt);
+            }
+        });
 
         jLabel7.setBackground(new java.awt.Color(8, 27, 40));
         jLabel7.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(74, 103, 147));
         jLabel7.setText("Playing platform:");
 
-        jButton10.setBackground(new java.awt.Color(0, 0, 0));
-        jButton10.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(255, 255, 255));
-        jButton10.setText("PC");
+        btnPC.setBackground(new java.awt.Color(0, 0, 0));
+        btnPC.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnPC.setForeground(new java.awt.Color(255, 255, 255));
+        btnPC.setText("PC");
+        btnPC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPCMouseClicked(evt);
+            }
+        });
 
-        jButton11.setBackground(new java.awt.Color(0, 0, 0));
-        jButton11.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(255, 255, 255));
-        jButton11.setText("Playstation");
+        btnPlaystation.setBackground(new java.awt.Color(0, 0, 0));
+        btnPlaystation.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnPlaystation.setForeground(new java.awt.Color(255, 255, 255));
+        btnPlaystation.setText("Playstation");
+        btnPlaystation.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPlaystation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPlaystationMouseClicked(evt);
+            }
+        });
 
-        jButton12.setBackground(new java.awt.Color(0, 0, 0));
-        jButton12.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton12.setForeground(new java.awt.Color(255, 255, 255));
-        jButton12.setText("Xbox");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnXbox.setBackground(new java.awt.Color(0, 0, 0));
+        btnXbox.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnXbox.setForeground(new java.awt.Color(255, 255, 255));
+        btnXbox.setText("Xbox");
+        btnXbox.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnXbox.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnXboxMouseClicked(evt);
+            }
+        });
+        btnXbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnXboxActionPerformed(evt);
             }
         });
 
@@ -194,23 +246,41 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(74, 103, 147));
         jLabel8.setText("Region:");
 
-        jButton4.setBackground(new java.awt.Color(0, 0, 0));
-        jButton4.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("São Paulo");
+        btnSP.setBackground(new java.awt.Color(0, 0, 0));
+        btnSP.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnSP.setForeground(new java.awt.Color(255, 255, 255));
+        btnSP.setText("SP");
+        btnSP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSPMouseClicked(evt);
+            }
+        });
 
-        jButton5.setBackground(new java.awt.Color(0, 0, 0));
-        jButton5.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("Minas Gerais");
+        btnMG.setBackground(new java.awt.Color(0, 0, 0));
+        btnMG.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnMG.setForeground(new java.awt.Color(255, 255, 255));
+        btnMG.setText("MG");
+        btnMG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMGMouseClicked(evt);
+            }
+        });
 
-        jButton9.setBackground(new java.awt.Color(0, 0, 0));
-        jButton9.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Rio de Janeiro");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnRJ.setBackground(new java.awt.Color(0, 0, 0));
+        btnRJ.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnRJ.setForeground(new java.awt.Color(255, 255, 255));
+        btnRJ.setText("RJ");
+        btnRJ.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRJ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRJMouseClicked(evt);
+            }
+        });
+        btnRJ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnRJActionPerformed(evt);
             }
         });
 
@@ -218,53 +288,101 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(74, 103, 147));
         jLabel9.setText("Language:");
 
-        jButton14.setBackground(new java.awt.Color(0, 0, 0));
-        jButton14.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton14.setForeground(new java.awt.Color(255, 255, 255));
-        jButton14.setText("Portuguese");
+        btnPortuguês.setBackground(new java.awt.Color(0, 0, 0));
+        btnPortuguês.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnPortuguês.setForeground(new java.awt.Color(255, 255, 255));
+        btnPortuguês.setText("Português");
+        btnPortuguês.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPortuguês.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPortuguêsMouseClicked(evt);
+            }
+        });
 
-        jButton15.setBackground(new java.awt.Color(0, 0, 0));
-        jButton15.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton15.setForeground(new java.awt.Color(255, 255, 255));
-        jButton15.setText("English");
+        btnEnglish.setBackground(new java.awt.Color(0, 0, 0));
+        btnEnglish.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnEnglish.setForeground(new java.awt.Color(255, 255, 255));
+        btnEnglish.setText("English");
+        btnEnglish.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEnglish.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEnglishMouseClicked(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(74, 103, 147));
         jLabel10.setText("Most Played Game:");
 
-        jButton13.setBackground(new java.awt.Color(0, 0, 0));
-        jButton13.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton13.setForeground(new java.awt.Color(255, 255, 255));
-        jButton13.setText("Valorant");
+        btnValorant.setBackground(new java.awt.Color(0, 0, 0));
+        btnValorant.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnValorant.setForeground(new java.awt.Color(255, 255, 255));
+        btnValorant.setText("Valorant");
+        btnValorant.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnValorant.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnValorantMouseClicked(evt);
+            }
+        });
 
-        jButton16.setBackground(new java.awt.Color(0, 0, 0));
-        jButton16.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton16.setForeground(new java.awt.Color(255, 255, 255));
-        jButton16.setText("Minecraft");
+        btnMinecraft.setBackground(new java.awt.Color(0, 0, 0));
+        btnMinecraft.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnMinecraft.setForeground(new java.awt.Color(255, 255, 255));
+        btnMinecraft.setText("Minecraft");
+        btnMinecraft.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMinecraft.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMinecraftMouseClicked(evt);
+            }
+        });
 
-        jButton17.setBackground(new java.awt.Color(0, 0, 0));
-        jButton17.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton17.setForeground(new java.awt.Color(255, 255, 255));
-        jButton17.setText("CS:GO");
+        btnFortnite.setBackground(new java.awt.Color(0, 0, 0));
+        btnFortnite.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnFortnite.setForeground(new java.awt.Color(255, 255, 255));
+        btnFortnite.setText("Fortnite");
+        btnFortnite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnFortnite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFortniteMouseClicked(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(74, 103, 147));
         jLabel11.setText("Playing Time:");
 
-        jButton18.setBackground(new java.awt.Color(0, 0, 0));
-        jButton18.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton18.setForeground(new java.awt.Color(255, 255, 255));
-        jButton18.setText("Morning");
+        btnManhã.setBackground(new java.awt.Color(0, 0, 0));
+        btnManhã.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnManhã.setForeground(new java.awt.Color(255, 255, 255));
+        btnManhã.setText("Manhã");
+        btnManhã.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnManhã.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnManhãMouseClicked(evt);
+            }
+        });
 
-        jButton19.setBackground(new java.awt.Color(0, 0, 0));
-        jButton19.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton19.setForeground(new java.awt.Color(255, 255, 255));
-        jButton19.setText("Afternoon");
+        btnTarde.setBackground(new java.awt.Color(0, 0, 0));
+        btnTarde.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnTarde.setForeground(new java.awt.Color(255, 255, 255));
+        btnTarde.setText("Tarde");
+        btnTarde.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTarde.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTardeMouseClicked(evt);
+            }
+        });
 
-        jButton20.setBackground(new java.awt.Color(0, 0, 0));
-        jButton20.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
-        jButton20.setForeground(new java.awt.Color(255, 255, 255));
-        jButton20.setText("Night");
+        btnNoite.setBackground(new java.awt.Color(0, 0, 0));
+        btnNoite.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        btnNoite.setForeground(new java.awt.Color(255, 255, 255));
+        btnNoite.setText("Noite");
+        btnNoite.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNoite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNoiteMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelCategoriasLayout = new javax.swing.GroupLayout(painelCategorias);
         painelCategorias.setLayout(painelCategoriasLayout);
@@ -275,68 +393,74 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
+                            .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnFPS, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnRPG, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnStrategyGames)))
+                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCategoriasLayout.createSequentialGroup()
+                                        .addGap(143, 143, 143)
+                                        .addComponent(btnManhã, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnTarde, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnNoite)
+                                        .addGap(78, 78, 78))
+                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                        .addGap(163, 163, 163)
+                                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                                .addComponent(jLabel11)
+                                                .addGap(148, 148, 148))
+                                            .addGroup(painelCategoriasLayout.createSequentialGroup()
+                                                .addComponent(jLabel10)
+                                                .addGap(90, 90, 90))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelCategoriasLayout.createSequentialGroup()
+                                                .addComponent(btnValorant, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnMinecraft, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnFortnite))))))
                             .addGroup(painelCategoriasLayout.createSequentialGroup()
                                 .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel7)
                                     .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                        .addComponent(jButton6)
+                                        .addComponent(btn8a12)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton7)
+                                        .addComponent(btn12a15)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton8))
+                                        .addComponent(btn15a18))
                                     .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                        .addComponent(jButton10)
+                                        .addComponent(btnPC, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton11)
+                                        .addComponent(btnPlaystation, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton12)))
-                                .addGap(213, 213, 213)
+                                        .addComponent(btnXbox, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(190, 190, 190)
                                 .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
                                     .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                        .addComponent(jButton14)
+                                        .addComponent(btnPortuguês, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton15))
-                                    .addComponent(jLabel9)))
+                                        .addComponent(btnEnglish))))
                             .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                        .addComponent(jButton1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton3))
-                                    .addComponent(jLabel5))
-                                .addGap(159, 159, 159)
-                                .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel10)
-                                    .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(jButton13)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton16))
-                                            .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                                .addComponent(jButton18)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton19)))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton17)
-                                            .addComponent(jButton20)))))
-                            .addGroup(painelCategoriasLayout.createSequentialGroup()
-                                .addComponent(jButton4)
+                                .addComponent(btnSP, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5)
+                                .addComponent(btnMG, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton9))))
+                                .addComponent(btnRJ, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(275, 275, 275)
                         .addComponent(jLabel3)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelCategoriasLayout.setVerticalGroup(
             painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -349,12 +473,12 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton13)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17)
-                    .addComponent(jButton1))
+                    .addComponent(btnRPG)
+                    .addComponent(btnStrategyGames)
+                    .addComponent(btnValorant)
+                    .addComponent(btnMinecraft)
+                    .addComponent(btnFortnite)
+                    .addComponent(btnFPS))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -363,35 +487,35 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton6)
-                            .addComponent(jButton7)
-                            .addComponent(jButton8))
+                            .addComponent(btn8a12)
+                            .addComponent(btn12a15)
+                            .addComponent(btn15a18))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
                         .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton10)
-                            .addComponent(jButton11)
-                            .addComponent(jButton12))
+                            .addComponent(btnPC)
+                            .addComponent(btnPlaystation)
+                            .addComponent(btnXbox))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
                         .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)
-                            .addComponent(jButton9)))
+                            .addComponent(btnSP)
+                            .addComponent(btnMG)
+                            .addComponent(btnRJ)))
                     .addGroup(painelCategoriasLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton18)
-                            .addComponent(jButton19)
-                            .addComponent(jButton20))
+                            .addComponent(btnManhã)
+                            .addComponent(btnTarde)
+                            .addComponent(btnNoite))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel9)
                         .addGap(18, 18, 18)
                         .addGroup(painelCategoriasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton14)
-                            .addComponent(jButton15))))
+                            .addComponent(btnPortuguês)
+                            .addComponent(btnEnglish))))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -431,7 +555,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(42, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -440,7 +564,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                         .addGap(163, 163, 163))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(painelCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))))
+                        .addGap(33, 33, 33))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,26 +573,26 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(painelCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(73, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         userLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/user.png"))); // NOI18N
@@ -503,9 +627,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(userLabel)
                 .addGap(23, 23, 23))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -533,7 +655,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,38 +664,21 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void adicionarEventosDosBotoes(Container container, JTextField searchField) {
-        for (Component comp : container.getComponents()) {
-            if (comp instanceof JButton) {
-                JButton botao = (JButton) comp;
-                botao.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Garante que o campo esteja ativado ao clicar no botão de sugestão
-                        if (!searchField.isEditable()) {
-                            searchField.setEditable(true);
-                            searchField.setFocusable(true);
-                        }
-
-                        searchField.setText(botao.getText());
-                        searchField.requestFocusInWindow();
-                    }
-                });
-            } else if (comp instanceof Container) {
-                adicionarEventosDosBotoes((Container) comp, searchField);
-            }
-        }
+    
+    private void preencherCampoBuscaComTexto(String texto) {
+        jSearchTextField.setEditable(true);
+        jSearchTextField.setFocusable(true);
+        jSearchTextField.setText(texto);
+        jSearchTextField.requestFocusInWindow();
     }
-
     
     private void jSearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSearchTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jSearchTextFieldActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btnRJActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRJActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btnRJActionPerformed
 
     private void jSearchTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jSearchTextFieldFocusGained
         // Código para sumir o PlaceHolder ao clicar para digitar.
@@ -607,9 +712,9 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void btnXboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_btnXboxActionPerformed
 
     private void creditsPrincipalLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsPrincipalLabelMouseClicked
         // Código para ao clicar no credits vá para a tela dos creditos:
@@ -629,6 +734,106 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jSearchTextField.setEditable(true);
         jSearchTextField.requestFocusInWindow();
     }//GEN-LAST:event_jSearchTextFieldMouseClicked
+
+    private void btnFPSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFPSMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnFPS.getText());
+    }//GEN-LAST:event_btnFPSMouseClicked
+
+    private void btnRPGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRPGMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnRPG.getText());
+    }//GEN-LAST:event_btnRPGMouseClicked
+
+    private void btnStrategyGamesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStrategyGamesMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnStrategyGames.getText());
+    }//GEN-LAST:event_btnStrategyGamesMouseClicked
+
+    private void btn8a12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8a12MouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btn8a12.getText());
+    }//GEN-LAST:event_btn8a12MouseClicked
+
+    private void btn12a15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn12a15MouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btn12a15.getText());
+    }//GEN-LAST:event_btn12a15MouseClicked
+
+    private void btn15a18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn15a18MouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btn15a18.getText());
+    }//GEN-LAST:event_btn15a18MouseClicked
+
+    private void btnPCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPCMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnPC.getText());
+    }//GEN-LAST:event_btnPCMouseClicked
+
+    private void btnPlaystationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPlaystationMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnPlaystation.getText());
+    }//GEN-LAST:event_btnPlaystationMouseClicked
+
+    private void btnXboxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXboxMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnXbox.getText());
+    }//GEN-LAST:event_btnXboxMouseClicked
+
+    private void btnSPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSPMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnSP.getText());
+    }//GEN-LAST:event_btnSPMouseClicked
+
+    private void btnMGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMGMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnMG.getText());
+    }//GEN-LAST:event_btnMGMouseClicked
+
+    private void btnRJMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRJMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnRJ.getText());
+    }//GEN-LAST:event_btnRJMouseClicked
+
+    private void btnValorantMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValorantMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnValorant.getText());
+    }//GEN-LAST:event_btnValorantMouseClicked
+
+    private void btnMinecraftMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinecraftMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnMinecraft.getText());
+    }//GEN-LAST:event_btnMinecraftMouseClicked
+
+    private void btnFortniteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFortniteMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnFortnite.getText());
+    }//GEN-LAST:event_btnFortniteMouseClicked
+
+    private void btnManhãMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManhãMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnManhã.getText());
+    }//GEN-LAST:event_btnManhãMouseClicked
+
+    private void btnTardeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTardeMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnTarde.getText());
+    }//GEN-LAST:event_btnTardeMouseClicked
+
+    private void btnNoiteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNoiteMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnNoite.getText());
+    }//GEN-LAST:event_btnNoiteMouseClicked
+
+    private void btnPortuguêsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPortuguêsMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnPortuguês.getText());
+    }//GEN-LAST:event_btnPortuguêsMouseClicked
+
+    private void btnEnglishMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEnglishMouseClicked
+        // função para preencher o campo search com o botão escolhido
+        preencherCampoBuscaComTexto(btnEnglish.getText());
+    }//GEN-LAST:event_btnEnglishMouseClicked
 
     /**
      * @param args the command line arguments
@@ -666,28 +871,28 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn12a15;
+    private javax.swing.JButton btn15a18;
+    private javax.swing.JButton btn8a12;
+    private javax.swing.JButton btnEnglish;
+    private javax.swing.JButton btnFPS;
+    private javax.swing.JButton btnFortnite;
+    private javax.swing.JButton btnMG;
+    private javax.swing.JButton btnManhã;
+    private javax.swing.JButton btnMinecraft;
+    private javax.swing.JButton btnNoite;
+    private javax.swing.JButton btnPC;
+    private javax.swing.JButton btnPlaystation;
+    private javax.swing.JButton btnPortuguês;
+    private javax.swing.JButton btnRJ;
+    private javax.swing.JButton btnRPG;
+    private javax.swing.JButton btnSP;
+    private javax.swing.JButton btnStrategyGames;
+    private javax.swing.JButton btnTarde;
+    private javax.swing.JButton btnValorant;
+    private javax.swing.JButton btnXbox;
     private javax.swing.JLabel creditsPrincipalLabel;
     private javax.swing.JLabel friendsPrincipalLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
