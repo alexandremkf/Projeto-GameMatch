@@ -1,17 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-
-
 package com.mycompany.projeto.gamematch;
 
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author carlo
- */
 public class Tela_Principal_Form extends javax.swing.JFrame {
 
     private String email;
@@ -72,7 +62,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         btnTarde = new javax.swing.JButton();
         btnNoite = new javax.swing.JButton();
         jSearchTextField = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        btnBusca = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
 
@@ -530,11 +520,16 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setBackground(new java.awt.Color(74, 103, 147));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/Lupa.png"))); // NOI18N
-        jLabel6.setText("jLabel6");
-        jLabel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBusca.setBackground(new java.awt.Color(74, 103, 147));
+        btnBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/Lupa.png"))); // NOI18N
+        btnBusca.setText("jLabel6");
+        btnBusca.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -548,7 +543,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
         );
         jPanel4Layout.setVerticalGroup(
@@ -557,7 +552,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(btnBusca))
                 .addGap(18, 18, 18)
                 .addComponent(painelCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
@@ -820,9 +815,25 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         preencherCampoBuscaComTexto(btnEnglish.getText());
     }//GEN-LAST:event_btnEnglishMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscaMouseClicked
+        
+        String textoBusca = jSearchTextField.getText().trim();
+
+        // Verifica se o campo está vazio ou com o texto padrão
+        if (textoBusca.isEmpty() || textoBusca.equals("Search...")) {
+            JOptionPane.showMessageDialog(null, 
+                "Por favor, digite algo para buscar.", 
+                "Busca inválida", 
+                JOptionPane.WARNING_MESSAGE);
+        } else {
+            // Código para acessar a tela de exibição dos usuários pesquisados:
+            new Tela_Busca_Usuarios_Form(email).setVisible(true);
+            this.dispose();
+        }
+
+        
+    }//GEN-LAST:event_btnBuscaMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -859,6 +870,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     private javax.swing.JButton btn12a15;
     private javax.swing.JButton btn15a18;
     private javax.swing.JButton btn8a12;
+    private javax.swing.JLabel btnBusca;
     private javax.swing.JButton btnEnglish;
     private javax.swing.JButton btnFPS;
     private javax.swing.JButton btnFortnite;
@@ -884,7 +896,6 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
