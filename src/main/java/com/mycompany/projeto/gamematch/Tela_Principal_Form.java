@@ -1,6 +1,10 @@
 package com.mycompany.projeto.gamematch;
 
 import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class Tela_Principal_Form extends javax.swing.JFrame {
 
@@ -646,9 +650,32 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void preencherCampoBuscaComTexto(String texto) {
+        String conteudoAtual = jSearchTextField.getText().trim();
+
+        // Se ainda estiver com o placeholder, limpa
+        if (conteudoAtual.equals("Search...")) {
+            conteudoAtual = "";
+        }
+
+        // Verifica se a tag já foi adicionada
+        List<String> tagsAtuais = new ArrayList<>(Arrays.asList(conteudoAtual.split("\\s+")));
+        if (tagsAtuais.contains(texto)) {
+            JOptionPane.showMessageDialog(null,
+                "Essa tag já foi adicionada.",
+                "Tag duplicada",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Adiciona a nova tag com espaço, se necessário
+        if (!conteudoAtual.isEmpty()) {
+            conteudoAtual += " ";
+        }
+        conteudoAtual += texto;
+
+        jSearchTextField.setText(conteudoAtual);
         jSearchTextField.setEditable(true);
         jSearchTextField.setFocusable(true);
-        jSearchTextField.setText(texto);
         jSearchTextField.requestFocusInWindow();
     }
     
