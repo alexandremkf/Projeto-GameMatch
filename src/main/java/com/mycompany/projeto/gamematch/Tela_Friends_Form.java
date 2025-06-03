@@ -157,7 +157,7 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
 
     private void creditsLabelfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelfriendsMouseClicked
         // Código para ao clicar no credits vá para a tela dos creditos:
-        new Tela_Creditos_Form().setVisible(true);
+        new Tela_Creditos_Form(email).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_creditsLabelfriendsMouseClicked
 
