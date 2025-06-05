@@ -1,25 +1,163 @@
 package com.mycompany.projeto.gamematch;
 
+import com.mycompany.projeto.gamematch.PainelUsuario;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.BoxLayout;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
+import javax.swing.JPanel;
+import javax.swing.JOptionPane;
+import javax.swing.GroupLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
 
 public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
 
     private String email;
+    private String tagsBusca;
     
     public Tela_Busca_Usuarios_Form() {
         initComponents();
         this.email = email;
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
-    }
-    
-    public Tela_Busca_Usuarios_Form(String email) {
-        initComponents();
-        this.email = email;
-        usuariosPanel.setLayout(new BoxLayout(usuariosPanel, BoxLayout.Y_AXIS));
-        setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        // Esconde o painel modelo para servir apenas como base para clonagem
+        panelModeloUsuario.setVisible(false);
     }
 
+    public Tela_Busca_Usuarios_Form(String email, String tagsBusca) {
+        initComponents();
+        this.email = email;
+        this.tagsBusca = tagsBusca;
+        setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        
+        usuariosPanel.setLayout(new BoxLayout(usuariosPanel, BoxLayout.Y_AXIS));
+        usuariosPanel.setAutoscrolls(true);
+        usuariosPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        
+        // IMPORTANTE: Garante que o scroll funcione com base no conteúdo
+        usuariosPanel.setPreferredSize(null);
+        scrollPanel.setViewportView(usuariosPanel);
+        
+        // Forçar que a rolagem funcione
+        scrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        exibirUsuariosComTags(); // já chama o método ao abrir a tela
+    }
+    
+    private void exibirUsuariosComTags() {
+        List<String> tagsBuscadas = Arrays.asList(tagsBusca.split("\\s+"));
+        List<Map<String, String>> usuarios = buscarUsuariosComTags(tagsBuscadas);
+
+        usuariosPanel.removeAll();
+        usuariosPanel.add(Box.createVerticalStrut(10)); // espaçamento no topo
+
+        // Pegue o ícone do botão do painel modelo (só uma vez)
+        javax.swing.Icon iconeBotao = ((JLabel)panelModeloUsuario.getComponent(2)).getIcon();
+
+        for (Map<String, String> user : usuarios) {
+            PainelUsuario painel = new PainelUsuario(
+                user.get("username"),
+                user.get("tags"),
+                user.get("email"),
+                iconeBotao,
+                panelModeloUsuario
+            );
+            usuariosPanel.add(painel);
+            usuariosPanel.add(javax.swing.Box.createVerticalStrut(20)); // espaçamento de 10 pixels
+        }
+
+        usuariosPanel.revalidate();
+        usuariosPanel.repaint();
+        scrollPanel.revalidate();
+        scrollPanel.repaint();
+    }
+    
+    private List<Map<String, String>> buscarUsuariosComTags(List<String> tags) {
+        List<Map<String, String>> usuarios = new ArrayList<>();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
+
+            // Monta o WHERE dinâmico com os campos corretos
+            StringBuilder sql = new StringBuilder("SELECT * FROM users WHERE ");
+            for (int i = 0; i < tags.size(); i++) {
+                if (i > 0) sql.append(" AND ");
+                sql.append("(");
+                sql.append("age LIKE ? OR ");
+                sql.append("region LIKE ? OR ");
+                sql.append("platform LIKE ? OR ");
+                sql.append("game_style LIKE ? OR ");
+                sql.append("language LIKE ? OR ");
+                sql.append("most_played_game LIKE ? OR ");
+                sql.append("playing_time LIKE ? OR ");
+                sql.append("self_description LIKE ?");
+                sql.append(")");
+            }
+
+            PreparedStatement stmt = con.prepareStatement(sql.toString());
+
+            int paramIndex = 1;
+            for (String tag : tags) {
+                for (int j = 0; j < 8; j++) { // 8 campos por tag
+                    stmt.setString(paramIndex++, "%" + tag + "%");
+                }
+            }
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Map<String, String> usuario = new HashMap<>();
+                usuario.put("username", rs.getString("username"));
+                usuario.put("email", rs.getString("email"));
+
+                // Concatena as "tags visíveis" do usuário
+                String tagsCombinadas = rs.getString("age") + ", " +
+                                        rs.getString("region") + ", " +
+                                        rs.getString("platform") + ", " +
+                                        rs.getString("game_style") + ", " +
+                                        rs.getString("language") + ", " +
+                                        rs.getString("most_played_game") + ", " +
+                                        rs.getString("playing_time") + ", " +
+                                        rs.getString("self_description");
+
+                usuario.put("tags", tagsCombinadas);
+                usuarios.add(usuario);
+            }
+
+            rs.close();
+            stmt.close();
+            con.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao buscar usuários.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+        return usuarios;
+    }
+    
+    private void ajustarAlturaUsuariosPanel(int quantidadeUsuarios) {
+        int alturaPainel = 140; // altura estimada de cada painel de usuário (ajuste se necessário)
+        int espacoEntre = 20;   // espaçamento vertical entre os painéis
+        int margemExtra = 40;   // margem superior/inferior
+
+        int alturaTotal = (alturaPainel * quantidadeUsuarios) + (espacoEntre * (quantidadeUsuarios - 1)) + margemExtra;
+
+        usuariosPanel.setPreferredSize(new java.awt.Dimension(scrollPanel.getWidth() - 20, alturaTotal));
+    }
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +169,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         scrollPanel = new javax.swing.JScrollPane();
         usuariosPanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        panelModeloUsuario = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         tagsLabel = new javax.swing.JLabel();
         btnAdd = new javax.swing.JLabel();
@@ -75,7 +213,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         usuariosPanel.setMaximumSize(new java.awt.Dimension(32767, 32760));
         usuariosPanel.setPreferredSize(new java.awt.Dimension(930, 550));
 
-        jPanel3.setBackground(new java.awt.Color(8, 27, 40));
+        panelModeloUsuario.setBackground(new java.awt.Color(8, 27, 40));
 
         usernameLabel.setBackground(new java.awt.Color(8, 27, 40));
         usernameLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
@@ -91,12 +229,13 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         btnAdd.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(74, 103, 147));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/add.png"))); // NOI18N
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelModeloUsuarioLayout = new javax.swing.GroupLayout(panelModeloUsuario);
+        panelModeloUsuario.setLayout(panelModeloUsuarioLayout);
+        panelModeloUsuarioLayout.setHorizontalGroup(
+            panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(usernameLabel)
                 .addGap(112, 112, 112)
@@ -105,16 +244,16 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 .addComponent(btnAdd)
                 .addGap(30, 30, 30))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+        panelModeloUsuarioLayout.setVerticalGroup(
+            panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
+                .addGroup(panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(usernameLabel)
                             .addComponent(tagsLabel)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(btnAdd)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -133,7 +272,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 .addGroup(usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(usuariosPanelLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelModeloUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(usuariosPanelLayout.createSequentialGroup()
                         .addGap(393, 393, 393)
                         .addComponent(jLabel3)))
@@ -145,7 +284,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelModeloUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(361, Short.MAX_VALUE))
         );
 
@@ -249,9 +388,13 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoGMfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoGMfriendsMouseClicked
-        // Código para ao clicar no Logo vá para a tela principal:
-        new Tela_Principal_Form(email).setVisible(true);
-        this.dispose();
+        // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
+        Tela_Principal_Form main = new Tela_Principal_Form(email);
+        main.setSize(1021, 722);
+        main.setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        main.setVisible(true);              
+
+        this.dispose(); // fecha a tela de login
     }//GEN-LAST:event_logoGMfriendsMouseClicked
 
     private void creditsLabelfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelfriendsMouseClicked
@@ -314,9 +457,9 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel logoGMfriends;
     private javax.swing.JLabel logoutLabel;
+    private javax.swing.JPanel panelModeloUsuario;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JLabel tagsLabel;
     private javax.swing.JLabel userLabel;

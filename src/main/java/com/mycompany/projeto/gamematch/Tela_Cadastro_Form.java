@@ -8,9 +8,6 @@ import javax.swing.JOptionPane;
 
 public class Tela_Cadastro_Form extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Tela_Cadastro_Form
-     */
     public Tela_Cadastro_Form() {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.

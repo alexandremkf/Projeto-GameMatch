@@ -614,9 +614,13 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_friendsUserLabelMouseClicked
 
     private void logoUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoUserLabelMouseClicked
-        // Código para ao clicar no Logo vá para a tela principal:
-        new Tela_Principal_Form(email).setVisible(true);
-        this.dispose();
+        // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
+        Tela_Principal_Form main = new Tela_Principal_Form(email);
+        main.setSize(1021, 722);
+        main.setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        main.setVisible(true);              
+
+        this.dispose(); // fecha a tela de login
     }//GEN-LAST:event_logoUserLabelMouseClicked
 
     private void editbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editbtnMouseClicked

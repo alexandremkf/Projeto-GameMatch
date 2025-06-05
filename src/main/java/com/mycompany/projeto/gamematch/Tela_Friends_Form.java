@@ -150,9 +150,13 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoGMfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoGMfriendsMouseClicked
-        // Código para ao clicar no Logo vá para a tela principal:
-        new Tela_Principal_Form(email).setVisible(true);
-        this.dispose();
+        // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
+        Tela_Principal_Form main = new Tela_Principal_Form(email);
+        main.setSize(1021, 722);
+        main.setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        main.setVisible(true);              
+
+        this.dispose(); // fecha a tela de login
     }//GEN-LAST:event_logoGMfriendsMouseClicked
 
     private void creditsLabelfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelfriendsMouseClicked

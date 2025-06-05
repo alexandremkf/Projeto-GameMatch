@@ -13,6 +13,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     public Tela_Principal_Form() {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        setSize(1021, 722);
         
         // Comportamento inicial do campo Search
         jSearchTextField.setText("Search...");
@@ -579,16 +580,16 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
+                .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addGap(101, 101, 101))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(16, 16, 16)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         userLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/user.png"))); // NOI18N
@@ -855,7 +856,6 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnglishMouseClicked
 
     private void btnBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscaMouseClicked
-        
         String textoBusca = jSearchTextField.getText().trim();
 
         // Verifica se o campo está vazio ou com o texto padrão
@@ -866,11 +866,9 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 JOptionPane.WARNING_MESSAGE);
         } else {
             // Código para acessar a tela de exibição dos usuários pesquisados:
-            new Tela_Busca_Usuarios_Form(email).setVisible(true);
+            new Tela_Busca_Usuarios_Form(email, textoBusca).setVisible(true);
             this.dispose();
         }
-
-        
     }//GEN-LAST:event_btnBuscaMouseClicked
 
     private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked

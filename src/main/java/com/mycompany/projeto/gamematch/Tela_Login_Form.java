@@ -279,10 +279,12 @@ public class Tela_Login_Form extends javax.swing.JFrame {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                JOptionPane.showMessageDialog(this, "Login bem-sucedido!");
-                
                 // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
-                new Tela_Principal_Form(email).setVisible(true);
+                Tela_Principal_Form main = new Tela_Principal_Form(email);
+                main.setSize(1021, 722);
+                main.setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+                main.setVisible(true);              
+                
                 this.dispose(); // fecha a tela de login
             } else {
                 JOptionPane.showMessageDialog(this, "E-mail ou senha inválidos!", "Erro", JOptionPane.ERROR_MESSAGE);
