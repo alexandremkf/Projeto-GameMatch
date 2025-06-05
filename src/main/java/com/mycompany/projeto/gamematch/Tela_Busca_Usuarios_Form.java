@@ -125,14 +125,12 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 usuario.put("email", rs.getString("email"));
 
                 // Concatena as "tags visíveis" do usuário
-                String tagsCombinadas = rs.getString("age") + ", " +
-                                        rs.getString("region") + ", " +
-                                        rs.getString("platform") + ", " +
-                                        rs.getString("game_style") + ", " +
-                                        rs.getString("language") + ", " +
-                                        rs.getString("most_played_game") + ", " +
-                                        rs.getString("playing_time") + ", " +
-                                        rs.getString("self_description");
+                String tagsCombinadas = "Platform: " + rs.getString("platform") + ", " +
+                                        "Game Style: " + rs.getString("game_style") + ", " +
+                                        "Language: " + rs.getString("language") + ", " +
+                                        "M.P.G.: " + rs.getString("most_played_game") + ", " +
+                                        "Playing Time: " + rs.getString("playing_time") + ", " +
+                                        "Bio: " + rs.getString("self_description");
 
                 usuario.put("tags", tagsCombinadas);
                 usuarios.add(usuario);
