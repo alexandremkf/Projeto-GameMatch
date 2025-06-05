@@ -1,13 +1,133 @@
 package com.mycompany.projeto.gamematch;
 
+import com.mycompany.projeto.gamematch.PainelNotificacao;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class Tela_Notificacoes_Form extends javax.swing.JFrame {
 
     private String email;
     
     public Tela_Notificacoes_Form() {
         initComponents();
+        setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        
+        semNotificacao.setVisible(false);
+        
+        // Esconde o painel modelo para servir apenas como base para clonagem
+        panelModeloUsuarioNotification.setVisible(false);
+    }
+    
+    public Tela_Notificacoes_Form(String email) {
+        initComponents();
+        this.email = email;
+        setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        
+        carregarNotificacoes(); // Chamando a função
+    }
+    
+    private void carregarNotificacoes() {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch", "root", "2705");
+            String query = "SELECT u.username, u.tags, u.email FROM friend_requests f " +
+                           "JOIN usuarios u ON f.sender_email = u.email " +
+                           "WHERE f.receiver_email = ? AND f.status = 'pending'";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+
+            usuariosPanel.removeAll(); // limpa os antigos
+            panelModeloUsuarioNotification.setVisible(false); // esconde o modelo base
+            semNotificacao.setVisible(false); // começa escondido
+            
+            boolean temNotificacoes = false;
+
+            while (rs.next()) {
+                temNotificacoes = true;
+                
+                String username = rs.getString("username");
+                String tags = rs.getString("tags");
+                String senderEmail = rs.getString("email");
+
+                PainelNotificacao painel = new PainelNotificacao(
+                    username,
+                    tags,
+                    senderEmail,
+                    new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/accept.png")),
+                    new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/ignore.png"))
+                );
+
+                // Aqui você adiciona as ações de clique nos botões
+                painel.getBtnAccept().addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        aceitarPedido(senderEmail);
+                    }
+                });
+
+                painel.getBtnIgnore().addMouseListener(new MouseAdapter() {
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        ignorarPedido(senderEmail);
+                    }
+                });
+                
+                usuariosPanel.add(painel);
+            }
+
+            // Se não houver notificações, exibe o label
+            if (!temNotificacoes) {
+                semNotificacao.setVisible(true);
+            }
+            
+            usuariosPanel.revalidate();
+            usuariosPanel.repaint();
+
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void aceitarPedido(String senderEmail) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch", "root", "2705");
+            String query = "UPDATE friend_requests SET status = 'accepted' WHERE sender_email = ? AND receiver_email = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, senderEmail);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+            carregarNotificacoes(); // atualiza a lista
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    private void ignorarPedido(String senderEmail) {
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch", "root", "2705");
+            String query = "DELETE FROM friend_requests WHERE sender_email = ? AND receiver_email = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, senderEmail);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+            carregarNotificacoes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -20,11 +140,13 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         scrollPanel = new javax.swing.JScrollPane();
         usuariosPanel = new javax.swing.JPanel();
-        panelModeloUsuario = new javax.swing.JPanel();
+        panelModeloUsuarioNotification = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         tagsLabel = new javax.swing.JLabel();
         btnAccept = new javax.swing.JLabel();
+        btnIgnore = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        semNotificacao = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
 
@@ -70,7 +192,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         usuariosPanel.setMaximumSize(new java.awt.Dimension(32767, 32760));
         usuariosPanel.setPreferredSize(new java.awt.Dimension(930, 550));
 
-        panelModeloUsuario.setBackground(new java.awt.Color(8, 27, 40));
+        panelModeloUsuarioNotification.setBackground(new java.awt.Color(8, 27, 40));
 
         usernameLabel.setBackground(new java.awt.Color(8, 27, 40));
         usernameLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
@@ -87,32 +209,52 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         btnAccept.setForeground(new java.awt.Color(74, 103, 147));
         btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/accept.png"))); // NOI18N
         btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAccept.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAcceptMouseClicked(evt);
+            }
+        });
 
-        javax.swing.GroupLayout panelModeloUsuarioLayout = new javax.swing.GroupLayout(panelModeloUsuario);
-        panelModeloUsuario.setLayout(panelModeloUsuarioLayout);
-        panelModeloUsuarioLayout.setHorizontalGroup(
-            panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
+        btnIgnore.setBackground(new java.awt.Color(8, 27, 40));
+        btnIgnore.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
+        btnIgnore.setForeground(new java.awt.Color(74, 103, 147));
+        btnIgnore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/ignore.png"))); // NOI18N
+        btnIgnore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIgnore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnIgnoreMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelModeloUsuarioNotificationLayout = new javax.swing.GroupLayout(panelModeloUsuarioNotification);
+        panelModeloUsuarioNotification.setLayout(panelModeloUsuarioNotificationLayout);
+        panelModeloUsuarioNotificationLayout.setHorizontalGroup(
+            panelModeloUsuarioNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModeloUsuarioNotificationLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(usernameLabel)
                 .addGap(112, 112, 112)
                 .addComponent(tagsLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addComponent(btnIgnore)
+                .addGap(18, 18, 18)
                 .addComponent(btnAccept)
                 .addGap(30, 30, 30))
         );
-        panelModeloUsuarioLayout.setVerticalGroup(
-            panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
-                .addGroup(panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
+        panelModeloUsuarioNotificationLayout.setVerticalGroup(
+            panelModeloUsuarioNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelModeloUsuarioNotificationLayout.createSequentialGroup()
+                .addGroup(panelModeloUsuarioNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelModeloUsuarioNotificationLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addGroup(panelModeloUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(panelModeloUsuarioNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(usernameLabel)
                             .addComponent(tagsLabel)))
-                    .addGroup(panelModeloUsuarioLayout.createSequentialGroup()
+                    .addGroup(panelModeloUsuarioNotificationLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(btnAccept)))
+                        .addGroup(panelModeloUsuarioNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIgnore)
+                            .addComponent(btnAccept))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -120,6 +262,11 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Monospaced", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(74, 103, 147));
         jLabel3.setText("Notifications:");
+
+        semNotificacao.setBackground(new java.awt.Color(8, 27, 40));
+        semNotificacao.setFont(new java.awt.Font("Monospaced", 0, 36)); // NOI18N
+        semNotificacao.setForeground(new java.awt.Color(74, 103, 147));
+        semNotificacao.setText("Nenhuma Notificação!");
 
         javax.swing.GroupLayout usuariosPanelLayout = new javax.swing.GroupLayout(usuariosPanel);
         usuariosPanel.setLayout(usuariosPanelLayout);
@@ -129,11 +276,14 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 .addGroup(usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(usuariosPanelLayout.createSequentialGroup()
                         .addGap(111, 111, 111)
-                        .addComponent(panelModeloUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelModeloUsuarioNotification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(usuariosPanelLayout.createSequentialGroup()
                         .addGap(309, 309, 309)
-                        .addComponent(jLabel3)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                        .addComponent(jLabel3))
+                    .addGroup(usuariosPanelLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(semNotificacao)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         usuariosPanelLayout.setVerticalGroup(
             usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,8 +291,10 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(panelModeloUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(367, Short.MAX_VALUE))
+                .addComponent(panelModeloUsuarioNotification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(semNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(253, Short.MAX_VALUE))
         );
 
         scrollPanel.setViewportView(usuariosPanel);
@@ -278,6 +430,14 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
 
+    private void btnAcceptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcceptMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAcceptMouseClicked
+
+    private void btnIgnoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgnoreMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIgnoreMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -312,6 +472,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAccept;
+    private javax.swing.JLabel btnIgnore;
     private javax.swing.JLabel creditsLabelfriends;
     private javax.swing.JLabel friendsBusca;
     private javax.swing.JLabel jLabel3;
@@ -319,8 +480,9 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel logoGMfriends;
     private javax.swing.JLabel logoutLabel;
-    private javax.swing.JPanel panelModeloUsuario;
+    private javax.swing.JPanel panelModeloUsuarioNotification;
     private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JLabel semNotificacao;
     private javax.swing.JLabel tagsLabel;
     private javax.swing.JLabel userLabel;
     private javax.swing.JLabel usernameLabel;

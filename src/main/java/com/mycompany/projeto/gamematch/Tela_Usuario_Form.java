@@ -110,6 +110,7 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
         savebtn = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
+        btnNotification = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -468,6 +469,9 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
         userLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/user.png"))); // NOI18N
         userLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        btnNotification.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/notification.png"))); // NOI18N
+        btnNotification.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
         jPanel19Layout.setHorizontalGroup(
@@ -480,6 +484,8 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(creditsUserLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNotification)
+                .addGap(18, 18, 18)
                 .addComponent(logoutLabel)
                 .addGap(18, 18, 18)
                 .addComponent(userLabel)
@@ -499,8 +505,10 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(logoutLabel)
-                                .addComponent(userLabel))
+                                .addComponent(userLabel)
+                                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnNotification)
+                                    .addComponent(logoutLabel)))
                             .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(friendsUserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(creditsUserLabel)))))
@@ -679,6 +687,7 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldPlayingTimecriar;
     private javax.swing.JTextField TextFieldRegioncriar;
     private javax.swing.JTextField TextFieldUsernamecriar;
+    private javax.swing.JLabel btnNotification;
     private javax.swing.JLabel creditsUserLabel;
     private javax.swing.JLabel editbtn;
     private javax.swing.JLabel friendsUserLabel;

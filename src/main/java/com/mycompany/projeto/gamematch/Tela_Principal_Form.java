@@ -71,6 +71,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         btnDelete = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
+        btnNotification = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1558, 775));
@@ -608,6 +609,14 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
             }
         });
 
+        btnNotification.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/notification.png"))); // NOI18N
+        btnNotification.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNotification.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNotificationMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -620,6 +629,8 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(creditsPrincipalLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNotification, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(logoutLabel)
                 .addGap(18, 18, 18)
                 .addComponent(userLabel)
@@ -641,8 +652,10 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                                 .addComponent(creditsPrincipalLabel))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(logoutLabel)
-                                    .addComponent(userLabel))
+                                    .addComponent(userLabel)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnNotification, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(logoutLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGap(8, 8, 8)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -876,6 +889,11 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         jSearchTextField.setText("Search...");
     }//GEN-LAST:event_btnDeleteMouseClicked
 
+    private void btnNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotificationMouseClicked
+        new Tela_Notificacoes_Form(email).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNotificationMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -921,6 +939,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
     private javax.swing.JButton btnManhã;
     private javax.swing.JButton btnMinecraft;
     private javax.swing.JButton btnNoite;
+    private javax.swing.JLabel btnNotification;
     private javax.swing.JButton btnPC;
     private javax.swing.JButton btnPlaystation;
     private javax.swing.JButton btnPortuguês;
