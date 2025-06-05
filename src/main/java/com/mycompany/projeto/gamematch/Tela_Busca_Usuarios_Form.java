@@ -165,7 +165,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         logoGMfriends = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        friendsBusca = new javax.swing.JLabel();
         creditsLabelfriends = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         scrollPanel = new javax.swing.JScrollPane();
@@ -190,10 +190,16 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(74, 103, 147));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
-        jLabel1.setText("Friends");
+        friendsBusca.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        friendsBusca.setForeground(new java.awt.Color(74, 103, 147));
+        friendsBusca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/friends.png"))); // NOI18N
+        friendsBusca.setText("Friends");
+        friendsBusca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        friendsBusca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                friendsBuscaMouseClicked(evt);
+            }
+        });
 
         creditsLabelfriends.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
         creditsLabelfriends.setForeground(new java.awt.Color(74, 103, 147));
@@ -332,7 +338,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(logoGMfriends)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(friendsBusca)
                 .addGap(18, 18, 18)
                 .addComponent(creditsLabelfriends)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 357, Short.MAX_VALUE)
@@ -353,7 +359,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(friendsBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(creditsLabelfriends))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -416,6 +422,12 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
 
+    private void friendsBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_friendsBuscaMouseClicked
+        // Código para ao clicar no Friends vá para a tela dos amigos:
+        new Tela_Friends_Form(email).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_friendsBuscaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -454,7 +466,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAdd;
     private javax.swing.JLabel creditsLabelfriends;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel friendsBusca;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
