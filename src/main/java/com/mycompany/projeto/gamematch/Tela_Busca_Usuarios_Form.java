@@ -31,6 +31,11 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         scrollPanel = new javax.swing.JScrollPane();
         usuariosPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        usernameLabel = new javax.swing.JLabel();
+        tagsLabel = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
 
@@ -70,15 +75,78 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         usuariosPanel.setMaximumSize(new java.awt.Dimension(32767, 32760));
         usuariosPanel.setPreferredSize(new java.awt.Dimension(930, 550));
 
+        jPanel3.setBackground(new java.awt.Color(8, 27, 40));
+
+        usernameLabel.setBackground(new java.awt.Color(8, 27, 40));
+        usernameLabel.setFont(new java.awt.Font("Monospaced", 0, 24)); // NOI18N
+        usernameLabel.setForeground(new java.awt.Color(74, 103, 147));
+        usernameLabel.setText("Username");
+
+        tagsLabel.setBackground(new java.awt.Color(8, 27, 40));
+        tagsLabel.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
+        tagsLabel.setForeground(new java.awt.Color(74, 103, 147));
+        tagsLabel.setText("Tags");
+
+        btnAdd.setBackground(new java.awt.Color(8, 27, 40));
+        btnAdd.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(74, 103, 147));
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/add.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addComponent(usernameLabel)
+                .addGap(112, 112, 112)
+                .addComponent(tagsLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
+                .addComponent(btnAdd)
+                .addGap(30, 30, 30))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(usernameLabel)
+                            .addComponent(tagsLabel)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(btnAdd)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        jLabel3.setBackground(new java.awt.Color(8, 27, 40));
+        jLabel3.setFont(new java.awt.Font("Monospaced", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(74, 103, 147));
+        jLabel3.setText("Users:");
+
         javax.swing.GroupLayout usuariosPanelLayout = new javax.swing.GroupLayout(usuariosPanel);
         usuariosPanel.setLayout(usuariosPanelLayout);
         usuariosPanelLayout.setHorizontalGroup(
             usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+            .addGroup(usuariosPanelLayout.createSequentialGroup()
+                .addGroup(usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(usuariosPanelLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(usuariosPanelLayout.createSequentialGroup()
+                        .addGap(393, 393, 393)
+                        .addComponent(jLabel3)))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         usuariosPanelLayout.setVerticalGroup(
             usuariosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGroup(usuariosPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
         scrollPanel.setViewportView(usuariosPanel);
@@ -240,14 +308,19 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnAdd;
     private javax.swing.JLabel creditsLabelfriends;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel logoGMfriends;
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JLabel tagsLabel;
     private javax.swing.JLabel userLabel;
+    private javax.swing.JLabel usernameLabel;
     private javax.swing.JPanel usuariosPanel;
     // End of variables declaration//GEN-END:variables
 }
