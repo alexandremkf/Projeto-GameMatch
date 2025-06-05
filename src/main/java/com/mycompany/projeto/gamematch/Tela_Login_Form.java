@@ -281,7 +281,7 @@ public class Tela_Login_Form extends javax.swing.JFrame {
             if (rs.next()) {
                 // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
                 Tela_Principal_Form main = new Tela_Principal_Form(email);
-                main.setSize(1021, 722);
+                main.setSize(1021, 722); // Ajusta o tamanho da tela
                 main.setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
                 main.setVisible(true);              
                 
