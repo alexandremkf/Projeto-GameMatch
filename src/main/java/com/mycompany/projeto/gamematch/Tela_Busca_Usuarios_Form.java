@@ -94,7 +94,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
 
             // Monta o WHERE dinâmico com os campos corretos
-            StringBuilder sql = new StringBuilder("SELECT * FROM users WHERE ");
+            StringBuilder sql = new StringBuilder("SELECT * FROM users WHERE email != ? AND ");
             for (int i = 0; i < tags.size(); i++) {
                 if (i > 0) sql.append(" AND ");
                 sql.append("(");
@@ -112,6 +112,7 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
             PreparedStatement stmt = con.prepareStatement(sql.toString());
 
             int paramIndex = 1;
+            stmt.setString(paramIndex++, email);  // <- filtro para não incluir o próprio usuário
             for (String tag : tags) {
                 for (int j = 0; j < 8; j++) { // 8 campos por tag
                     stmt.setString(paramIndex++, "%" + tag + "%");
