@@ -49,6 +49,9 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         usuariosPanel.setPreferredSize(null);
         scrollPanel.setViewportView(usuariosPanel);
         
+        // Rolagem da tela
+        scrollPanel.getVerticalScrollBar().setUnitIncrement(20);
+        
         // Forçar que a rolagem funcione
         scrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
