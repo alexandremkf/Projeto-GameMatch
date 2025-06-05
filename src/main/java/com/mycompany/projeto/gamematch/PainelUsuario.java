@@ -26,6 +26,7 @@ public class PainelUsuario extends JPanel {
         lblTags = new JLabel(tagsHtml);
         
         btnAdd = new JLabel(iconeBotao);
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Deixa o botão add com o cursor Hand
         
         this.setBackground(new Color(8, 27, 40));
     
