@@ -21,9 +21,6 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
         semNotificacao.setVisible(false);
-        
-        // Esconde o painel modelo para servir apenas como base para clonagem
-        panelModeloUsuarioNotification.setVisible(false);
     }
     
     public Tela_Notificacoes_Form(String email) {
@@ -31,61 +28,71 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         this.email = email;
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
+        // Esconde o painel modelo para servir apenas como base para clonagem
+        panelModeloUsuarioNotification.setVisible(false);
+        
         carregarNotificacoes(); // Chamando a função
     }
     
     private void carregarNotificacoes() {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
-            String query = "SELECT u.username, u.tags, u.email FROM friend_requests f " +
-                           "JOIN usuarios u ON f.sender_email = u.email " +
+            String query = "SELECT u.username, u.email, u.platform, u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description " +
+                           "FROM friend_requests f " +
+                           "JOIN users u ON f.sender_email = u.email " +
                            "WHERE f.receiver_email = ? AND f.status = 'pending'";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
 
-            usuariosPanel.removeAll(); // limpa os antigos
-            panelModeloUsuarioNotification.setVisible(false); // esconde o modelo base
-            semNotificacao.setVisible(false); // começa escondido
-            
+            usuariosPanel.removeAll();
+            panelModeloUsuarioNotification.setVisible(false); // Esconde o modelo base
+            semNotificacao.setVisible(false); // Começa escondido
+
             boolean temNotificacoes = false;
 
             while (rs.next()) {
                 temNotificacoes = true;
-                
+
                 String username = rs.getString("username");
-                String tags = rs.getString("tags");
                 String senderEmail = rs.getString("email");
+
+                // Concatena as tags da mesma forma que na tela de busca
+                String tagsCombinadas = "Platform: " + rs.getString("platform") + ", " +
+                                        "Game Style: " + rs.getString("game_style") + ", " +
+                                        "Language: " + rs.getString("language") + ", " +
+                                        "M.P.G.: " + rs.getString("most_played_game") + ", " +
+                                        "Playing Time: " + rs.getString("playing_time") + ", " +
+                                        "Bio: " + rs.getString("self_description");
 
                 PainelNotificacao painel = new PainelNotificacao(
                     username,
-                    tags,
+                    tagsCombinadas,
                     senderEmail,
                     new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/accept.png")),
                     new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/ignore.png"))
                 );
 
-                // Aqui você adiciona as ações de clique nos botões
                 painel.getBtnAccept().addMouseListener(new MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    public void mouseClicked(MouseEvent evt) {
                         aceitarPedido(senderEmail);
                     }
                 });
 
                 painel.getBtnIgnore().addMouseListener(new MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    public void mouseClicked(MouseEvent evt) {
                         ignorarPedido(senderEmail);
                     }
                 });
-                
+
                 usuariosPanel.add(painel);
+                usuariosPanel.add(javax.swing.Box.createVerticalStrut(20)); // espaçamento
             }
 
-            // Se não houver notificações, exibe o label
             if (!temNotificacoes) {
                 semNotificacao.setVisible(true);
             }
-            
+
             usuariosPanel.revalidate();
             usuariosPanel.repaint();
 
@@ -116,14 +123,14 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     private void ignorarPedido(String senderEmail) {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
-            String query = "DELETE FROM friend_requests WHERE sender_email = ? AND receiver_email = ?";
+            String query = "DELETE FROM friend_requests WHERE sender_email = ? AND receiver_email = ? AND status = 'pending'";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, senderEmail);
             stmt.setString(2, email);
             stmt.executeUpdate();
             stmt.close();
             conn.close();
-            carregarNotificacoes();
+            carregarNotificacoes(); // atualiza a lista
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -143,8 +150,8 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         panelModeloUsuarioNotification = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         tagsLabel = new javax.swing.JLabel();
-        btnAccept = new javax.swing.JLabel();
-        btnIgnore = new javax.swing.JLabel();
+        btnModeloAccept = new javax.swing.JLabel();
+        btnModeloIgnore = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         semNotificacao = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
@@ -204,25 +211,25 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         tagsLabel.setForeground(new java.awt.Color(74, 103, 147));
         tagsLabel.setText("Tags");
 
-        btnAccept.setBackground(new java.awt.Color(8, 27, 40));
-        btnAccept.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
-        btnAccept.setForeground(new java.awt.Color(74, 103, 147));
-        btnAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/accept.png"))); // NOI18N
-        btnAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAccept.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnModeloAccept.setBackground(new java.awt.Color(8, 27, 40));
+        btnModeloAccept.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
+        btnModeloAccept.setForeground(new java.awt.Color(74, 103, 147));
+        btnModeloAccept.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/accept.png"))); // NOI18N
+        btnModeloAccept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModeloAccept.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAcceptMouseClicked(evt);
+                btnModeloAcceptMouseClicked(evt);
             }
         });
 
-        btnIgnore.setBackground(new java.awt.Color(8, 27, 40));
-        btnIgnore.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
-        btnIgnore.setForeground(new java.awt.Color(74, 103, 147));
-        btnIgnore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/ignore.png"))); // NOI18N
-        btnIgnore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnIgnore.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnModeloIgnore.setBackground(new java.awt.Color(8, 27, 40));
+        btnModeloIgnore.setFont(new java.awt.Font("Monospaced", 0, 20)); // NOI18N
+        btnModeloIgnore.setForeground(new java.awt.Color(74, 103, 147));
+        btnModeloIgnore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/ignore.png"))); // NOI18N
+        btnModeloIgnore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModeloIgnore.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnIgnoreMouseClicked(evt);
+                btnModeloIgnoreMouseClicked(evt);
             }
         });
 
@@ -236,9 +243,9 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 .addGap(112, 112, 112)
                 .addComponent(tagsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
-                .addComponent(btnIgnore)
+                .addComponent(btnModeloIgnore)
                 .addGap(18, 18, 18)
-                .addComponent(btnAccept)
+                .addComponent(btnModeloAccept)
                 .addGap(30, 30, 30))
         );
         panelModeloUsuarioNotificationLayout.setVerticalGroup(
@@ -253,8 +260,8 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                     .addGroup(panelModeloUsuarioNotificationLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(panelModeloUsuarioNotificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnIgnore)
-                            .addComponent(btnAccept))))
+                            .addComponent(btnModeloIgnore)
+                            .addComponent(btnModeloAccept))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -430,13 +437,13 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
 
-    private void btnAcceptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcceptMouseClicked
+    private void btnModeloAcceptMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloAcceptMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAcceptMouseClicked
+    }//GEN-LAST:event_btnModeloAcceptMouseClicked
 
-    private void btnIgnoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgnoreMouseClicked
+    private void btnModeloIgnoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModeloIgnoreMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnIgnoreMouseClicked
+    }//GEN-LAST:event_btnModeloIgnoreMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -471,8 +478,8 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnAccept;
-    private javax.swing.JLabel btnIgnore;
+    private javax.swing.JLabel btnModeloAccept;
+    private javax.swing.JLabel btnModeloIgnore;
     private javax.swing.JLabel creditsLabelfriends;
     private javax.swing.JLabel friendsBusca;
     private javax.swing.JLabel jLabel3;

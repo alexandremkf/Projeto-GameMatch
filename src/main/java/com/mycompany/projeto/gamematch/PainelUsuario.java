@@ -5,9 +5,10 @@ import javax.swing.JLabel;
 import javax.swing.GroupLayout;
 import javax.swing.LayoutStyle;
 import javax.swing.BorderFactory;
-import javax.swing.border.EmptyBorder;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.MouseListener;
 
 public class PainelUsuario extends JPanel {
 
@@ -21,20 +22,19 @@ public class PainelUsuario extends JPanel {
 
         lblUsername = new JLabel(username);
         
-        // transforma as tags numa string HTML com quebra de linha
+        // Transforma as tags numa string HTML com quebra de linha
         String tagsHtml = "<html>" + tags.replace(", ", "<br>") + "</html>";
         lblTags = new JLabel(tagsHtml);
         
         btnAdd = new JLabel(iconeBotao);
         btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Deixa o botão add com o cursor Hand
+        btnAdd.setOpaque(true); // Permite estilizar fundo no futuro
         
         this.setBackground(new Color(8, 27, 40));
     
-        lblUsername.setBackground(new Color(8, 27, 40));
         lblUsername.setForeground(new Color(74, 103, 147));
         lblUsername.setFont(new Font("Monospaced", Font.PLAIN, 24));
 
-        lblTags.setBackground(new Color(8, 27, 40));
         lblTags.setForeground(new Color(74, 103, 147));
         lblTags.setFont(new Font("Monospaced", Font.PLAIN, 18)); // menor fonte
 
@@ -64,16 +64,20 @@ public class PainelUsuario extends JPanel {
 
         this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // largura fixa, altura variável para acompanhar conteúdo
+        // Largura fixa, altura variável para acompanhar conteúdo
         this.setMaximumSize(new java.awt.Dimension(700, Integer.MAX_VALUE));
+        this.setPreferredSize(new Dimension(700, 80)); // altura fixa para consistência visual
     }
 
-    // Você pode adicionar métodos getter para o email ou botões, se precisar manipular
     public String getEmail() {
         return email;
     }
 
     public JLabel getBtnAdd() {
         return btnAdd;
+    }
+    
+    public void addBtnAddListener(MouseListener listener) {
+        btnAdd.addMouseListener(listener);
     }
 }

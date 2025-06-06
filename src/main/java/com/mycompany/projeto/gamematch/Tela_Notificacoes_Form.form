@@ -259,9 +259,9 @@
                                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                                   <Component id="tagsLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace pref="230" max="32767" attributes="0"/>
-                                  <Component id="btnIgnore" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnModeloIgnore" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnAccept" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnModeloAccept" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -280,8 +280,8 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="btnIgnore" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnAccept" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnModeloIgnore" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnModeloAccept" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -319,7 +319,7 @@
                             <Property name="text" type="java.lang.String" value="Tags"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="btnAccept">
+                        <Component class="javax.swing.JLabel" name="btnModeloAccept">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="28" green="1b" red="8" type="rgb"/>
@@ -338,10 +338,10 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAcceptMouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnModeloAcceptMouseClicked"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="btnIgnore">
+                        <Component class="javax.swing.JLabel" name="btnModeloIgnore">
                           <Properties>
                             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                               <Color blue="28" green="1b" red="8" type="rgb"/>
@@ -360,7 +360,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnIgnoreMouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnModeloIgnoreMouseClicked"/>
                           </Events>
                         </Component>
                       </SubComponents>

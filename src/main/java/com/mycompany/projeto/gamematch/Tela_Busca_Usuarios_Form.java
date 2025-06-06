@@ -77,8 +77,21 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 iconeBotao,
                 panelModeloUsuario
             );
+            
+            // Registra o listener para o botão "Add"
+            painel.addBtnAddListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    String receiverEmail = user.get("email"); // email do usuário clicado
+                    enviarPedidoDeAmizade(email, receiverEmail);
+
+                    // Desabilita ou esconde o botão para não enviar pedido duplicado
+                    painel.getBtnAdd().setVisible(false);
+                }
+            });
+            
             usuariosPanel.add(painel);
-            usuariosPanel.add(javax.swing.Box.createVerticalStrut(20)); // espaçamento de 10 pixels
+            usuariosPanel.add(javax.swing.Box.createVerticalStrut(20)); // espaçamento de 20 pixels
         }
 
         usuariosPanel.revalidate();
