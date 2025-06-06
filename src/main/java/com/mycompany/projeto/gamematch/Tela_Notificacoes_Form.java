@@ -36,7 +36,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     
     private void carregarNotificacoes() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch", "root", "2705");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
             String query = "SELECT u.username, u.tags, u.email FROM friend_requests f " +
                            "JOIN usuarios u ON f.sender_email = u.email " +
                            "WHERE f.receiver_email = ? AND f.status = 'pending'";
@@ -99,7 +99,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     
     private void aceitarPedido(String senderEmail) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch", "root", "2705");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
             String query = "UPDATE friend_requests SET status = 'accepted' WHERE sender_email = ? AND receiver_email = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, senderEmail);
@@ -115,7 +115,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
 
     private void ignorarPedido(String senderEmail) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch", "root", "2705");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
             String query = "DELETE FROM friend_requests WHERE sender_email = ? AND receiver_email = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, senderEmail);
