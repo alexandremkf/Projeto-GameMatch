@@ -2,6 +2,7 @@ package com.mycompany.projeto.gamematch;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 public class PainelNotificacao extends JPanel {
 
@@ -16,6 +17,7 @@ public class PainelNotificacao extends JPanel {
 
         lblUsername = new JLabel(username);
 
+        String safeTags = (tags == null) ? "" : tags;
         String tagsHtml = "<html>" + tags.replace(", ", "<br>") + "</html>";
         lblTags = new JLabel(tagsHtml);
 
@@ -74,5 +76,13 @@ public class PainelNotificacao extends JPanel {
 
     public String getEmail() {
         return email;
+    }
+
+    public void addBtnAcceptListener(MouseListener listener) {
+        btnAccept.addMouseListener(listener);
+    }
+
+    public void addBtnIgnoreListener(MouseListener listener) {
+        btnIgnore.addMouseListener(listener);
     }
 }

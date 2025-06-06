@@ -2,15 +2,10 @@ package com.mycompany.projeto.gamematch;
 
 import com.mycompany.projeto.gamematch.PainelNotificacao;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class Tela_Notificacoes_Form extends javax.swing.JFrame {
 
@@ -35,6 +30,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     }
     
     private void carregarNotificacoes() {
+        // Conexão com o banco de dados
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
             String query = "SELECT u.username, u.email, u.platform, u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description " +
@@ -46,18 +42,16 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
             ResultSet rs = stmt.executeQuery();
 
             usuariosPanel.removeAll();
-            panelModeloUsuarioNotification.setVisible(false); // Esconde o modelo base
-            semNotificacao.setVisible(false); // Começa escondido
-
+            semNotificacao.setVisible(false);
             boolean temNotificacoes = false;
 
+            // Estrutura da notificação
             while (rs.next()) {
                 temNotificacoes = true;
 
                 String username = rs.getString("username");
                 String senderEmail = rs.getString("email");
 
-                // Concatena as tags da mesma forma que na tela de busca
                 String tagsCombinadas = "Platform: " + rs.getString("platform") + ", " +
                                         "Game Style: " + rs.getString("game_style") + ", " +
                                         "Language: " + rs.getString("language") + ", " +
@@ -73,22 +67,31 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                     new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/ignore.png"))
                 );
 
+                // Chamando a funcionaliade do botão accept
                 painel.getBtnAccept().addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent evt) {
                         aceitarPedido(senderEmail);
+                        usuariosPanel.remove(painel);
+                        usuariosPanel.revalidate();
+                        usuariosPanel.repaint();
                     }
                 });
 
+                // Chamando a funcionaliade do botão ignore
                 painel.getBtnIgnore().addMouseListener(new MouseAdapter() {
                     public void mouseClicked(MouseEvent evt) {
                         ignorarPedido(senderEmail);
+                        usuariosPanel.remove(painel);
+                        usuariosPanel.revalidate();
+                        usuariosPanel.repaint();
                     }
                 });
 
                 usuariosPanel.add(painel);
-                usuariosPanel.add(javax.swing.Box.createVerticalStrut(20)); // espaçamento
+                usuariosPanel.add(Box.createVerticalStrut(20));
             }
 
+            // Se não tiver notificação
             if (!temNotificacoes) {
                 semNotificacao.setVisible(true);
             }
@@ -105,32 +108,45 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     }
     
     private void aceitarPedido(String senderEmail) {
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
-            String query = "UPDATE friend_requests SET status = 'accepted' WHERE sender_email = ? AND receiver_email = ?";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, senderEmail);
-            stmt.setString(2, email);
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-            carregarNotificacoes(); // atualiza a lista
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
+
+            // Atualiza o status do pedido
+            String updateQuery = "UPDATE friend_requests SET status = 'accepted' WHERE sender_email = ? AND receiver_email = ?";
+            try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
+                updateStmt.setString(1, senderEmail);
+                updateStmt.setString(2, email);
+                updateStmt.executeUpdate();
+            }
+
+            // Insere amizade na tabela `friends`
+            String insertQuery = "INSERT INTO friends (user_email, friend_email) VALUES (?, ?), (?, ?)";
+            try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+                insertStmt.setString(1, email);
+                insertStmt.setString(2, senderEmail);
+                insertStmt.setString(3, senderEmail);
+                insertStmt.setString(4, email);
+                insertStmt.executeUpdate();
+            }
+
+            JOptionPane.showMessageDialog(this, "Pedido de amizade de " + senderEmail + " aceito!");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void ignorarPedido(String senderEmail) {
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
-            String query = "DELETE FROM friend_requests WHERE sender_email = ? AND receiver_email = ? AND status = 'pending'";
-            PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setString(1, senderEmail);
-            stmt.setString(2, email);
-            stmt.executeUpdate();
-            stmt.close();
-            conn.close();
-            carregarNotificacoes(); // atualiza a lista
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
+
+            String deleteQuery = "DELETE FROM friend_requests WHERE sender_email = ? AND receiver_email = ? AND status = 'pending'";
+            try (PreparedStatement stmt = conn.prepareStatement(deleteQuery)) {
+                stmt.setString(1, senderEmail);
+                stmt.setString(2, email);
+                stmt.executeUpdate();
+            }
+
+            JOptionPane.showMessageDialog(this, "Pedido de amizade de " + senderEmail + " ignorado.");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -403,6 +419,8 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Navegação entre telas:
+    
     private void logoGMfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoGMfriendsMouseClicked
         // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
         Tela_Principal_Form main = new Tela_Principal_Form(email);
