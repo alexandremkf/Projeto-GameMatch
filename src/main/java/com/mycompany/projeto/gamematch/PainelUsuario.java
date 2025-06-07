@@ -1,13 +1,7 @@
 package com.mycompany.projeto.gamematch;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.GroupLayout;
-import javax.swing.LayoutStyle;
-import javax.swing.BorderFactory;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Dimension;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseListener;
 
 public class PainelUsuario extends JPanel {
@@ -21,23 +15,26 @@ public class PainelUsuario extends JPanel {
         this.email = email;
 
         lblUsername = new JLabel(username);
-        
+
         // Transforma as tags numa string HTML com quebra de linha
         String tagsHtml = "<html>" + tags.replace(", ", "<br>") + "</html>";
         lblTags = new JLabel(tagsHtml);
-        
+
+        // Botão "Add" estilizado com ícone
         btnAdd = new JLabel(iconeBotao);
-        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR)); // Deixa o botão add com o cursor Hand
-        btnAdd.setOpaque(true); // Permite estilizar fundo no futuro
-        
+        btnAdd.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btnAdd.setOpaque(true); // permite futura personalização de fundo
+
+        // Estilos visuais
         this.setBackground(new Color(8, 27, 40));
-    
+
         lblUsername.setForeground(new Color(74, 103, 147));
         lblUsername.setFont(new Font("Monospaced", Font.PLAIN, 24));
 
         lblTags.setForeground(new Color(74, 103, 147));
-        lblTags.setFont(new Font("Monospaced", Font.PLAIN, 18)); // menor fonte
+        lblTags.setFont(new Font("Monospaced", Font.PLAIN, 18)); // fonte menor
 
+        // Layout usando GroupLayout
         GroupLayout layout = new GroupLayout(this);
         this.setLayout(layout);
 
@@ -63,10 +60,7 @@ public class PainelUsuario extends JPanel {
         );
 
         this.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
-        // Largura fixa, altura variável para acompanhar conteúdo
-        this.setMaximumSize(new java.awt.Dimension(700, Integer.MAX_VALUE));
-        this.setPreferredSize(new Dimension(700, 80)); // altura fixa para consistência visual
+        this.setMaximumSize(new Dimension(700, Integer.MAX_VALUE)); 
     }
 
     public String getEmail() {
@@ -76,8 +70,12 @@ public class PainelUsuario extends JPanel {
     public JLabel getBtnAdd() {
         return btnAdd;
     }
-    
-    public void addBtnAddListener(MouseListener listener) {
+
+    // Substitui listeners antigos e adiciona o novo — evita múltiplos cliques duplicados
+    public void setBtnAddListener(MouseListener listener) {
+        for (MouseListener ml : btnAdd.getMouseListeners()) {
+            btnAdd.removeMouseListener(ml);
+        }
         btnAdd.addMouseListener(listener);
     }
 }

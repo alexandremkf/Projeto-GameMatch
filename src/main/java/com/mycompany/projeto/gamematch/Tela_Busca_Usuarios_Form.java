@@ -13,13 +13,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.HashMap;
-import javax.swing.JPanel;
 import javax.swing.JOptionPane;
-import javax.swing.GroupLayout;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import java.awt.Component;
+import java.awt.Dimension;
 
 public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
 
@@ -46,15 +45,13 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         usuariosPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         // IMPORTANTE: Garante que o scroll funcione com base no conteúdo
-        usuariosPanel.setPreferredSize(null);
         scrollPanel.setViewportView(usuariosPanel);
-        
-        // Rolagem da tela
-        scrollPanel.getVerticalScrollBar().setUnitIncrement(20);
         
         // Forçar que a rolagem funcione
         scrollPanel.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-        scrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
+        // Rolagem da tela
+        scrollPanel.getVerticalScrollBar().setUnitIncrement(20);
         
         exibirUsuariosComTags(); // já chama o método ao abrir a tela
     }
@@ -66,8 +63,8 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         usuariosPanel.removeAll();
         usuariosPanel.add(Box.createVerticalStrut(10)); // espaçamento no topo
 
-        // Pegue o ícone do botão do painel modelo (só uma vez)
-        javax.swing.Icon iconeBotao = ((JLabel)panelModeloUsuario.getComponent(2)).getIcon();
+        // Pega o ícone do botão do painel modelo
+        javax.swing.Icon iconeBotao = ((JLabel) panelModeloUsuario.getComponent(2)).getIcon();
 
         for (Map<String, String> user : usuarios) {
             PainelUsuario painel = new PainelUsuario(
@@ -77,27 +74,29 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 iconeBotao,
                 panelModeloUsuario
             );
-            
-            // Registra o listener para o botão "Add"
-            painel.addBtnAddListener(new java.awt.event.MouseAdapter() {
+
+            painel.setBtnAddListener(new java.awt.event.MouseAdapter() {
                 @Override
                 public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    String receiverEmail = user.get("email"); // email do usuário clicado
+                    String receiverEmail = user.get("email");
                     enviarPedidoDeAmizade(email, receiverEmail);
 
-                    // Desabilita ou esconde o botão para não enviar pedido duplicado
+                    // Oculta o botão após o clique
                     painel.getBtnAdd().setVisible(false);
                 }
             });
-            
+
             usuariosPanel.add(painel);
-            usuariosPanel.add(javax.swing.Box.createVerticalStrut(20)); // espaçamento de 20 pixels
+            usuariosPanel.add(Box.createVerticalStrut(20)); // espaçamento entre painéis
         }
 
+        usuariosPanel.setPreferredSize(null);
+        usuariosPanel.setMaximumSize(null);
+        usuariosPanel.setMinimumSize(null);
+        
+        // Atualiza o Painel
         usuariosPanel.revalidate();
         usuariosPanel.repaint();
-        scrollPanel.revalidate();
-        scrollPanel.repaint();
     }
     
     private List<Map<String, String>> buscarUsuariosComTags(List<String> tags) {
@@ -163,13 +162,15 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     }
     
     private void ajustarAlturaUsuariosPanel(int quantidadeUsuarios) {
-        int alturaPainel = 140; // altura estimada de cada painel de usuário (ajuste se necessário)
-        int espacoEntre = 20;   // espaçamento vertical entre os painéis
-        int margemExtra = 40;   // margem superior/inferior
-
-        int alturaTotal = (alturaPainel * quantidadeUsuarios) + (espacoEntre * (quantidadeUsuarios - 1)) + margemExtra;
-
-        usuariosPanel.setPreferredSize(new java.awt.Dimension(scrollPanel.getWidth() - 20, alturaTotal));
+//        int alturaPainel = 90; // altura estimada de cada PainelUsuario
+//        int espacoEntre = 10;
+//
+//        int alturaTotal = (alturaPainel * quantidadeUsuarios) + (espacoEntre * (quantidadeUsuarios - 1));
+//        if (quantidadeUsuarios == 0) alturaTotal = 0;
+//
+//        usuariosPanel.setPreferredSize(new Dimension(750, alturaTotal));
+//        usuariosPanel.revalidate();
+//        usuariosPanel.repaint();
     }
     
     private void enviarPedidoDeAmizade(String senderEmail, String receiverEmail) {
