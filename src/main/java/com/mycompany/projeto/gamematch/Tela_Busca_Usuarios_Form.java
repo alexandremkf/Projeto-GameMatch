@@ -41,6 +41,8 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
         usuariosPanel.setLayout(new BoxLayout(usuariosPanel, BoxLayout.Y_AXIS));
+        usuariosPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
+        usuariosPanel.setAlignmentY(Component.TOP_ALIGNMENT);
         usuariosPanel.setAutoscrolls(true);
         usuariosPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
@@ -87,16 +89,26 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
             });
 
             usuariosPanel.add(painel);
-            usuariosPanel.add(Box.createVerticalStrut(20)); // espaçamento entre painéis
+            usuariosPanel.add(Box.createVerticalStrut(25)); // espaçamento entre painéis
+        }
+        
+        // Calcular altura real do conteúdo:
+        int alturaTotal = 0;
+        for (Component comp : usuariosPanel.getComponents()) {
+            alturaTotal += comp.getPreferredSize().height;
         }
 
-        usuariosPanel.setPreferredSize(null);
-        usuariosPanel.setMaximumSize(null);
-        usuariosPanel.setMinimumSize(null);
+        // Define altura baseada no conteúdo real
+        usuariosPanel.setPreferredSize(new Dimension(scrollPanel.getWidth(), alturaTotal));
         
-        // Atualiza o Painel
+        // Atualiza os componentes
         usuariosPanel.revalidate();
         usuariosPanel.repaint();
+        scrollPanel.revalidate();
+        scrollPanel.repaint();
+        
+        usuariosPanel.add(Box.createVerticalStrut(400)); // espaçamento inferior
+        //ajustarAlturaUsuariosPanel(usuarios.size());
     }
     
     private List<Map<String, String>> buscarUsuariosComTags(List<String> tags) {
@@ -162,15 +174,21 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     }
     
     private void ajustarAlturaUsuariosPanel(int quantidadeUsuarios) {
-//        int alturaPainel = 90; // altura estimada de cada PainelUsuario
-//        int espacoEntre = 10;
-//
-//        int alturaTotal = (alturaPainel * quantidadeUsuarios) + (espacoEntre * (quantidadeUsuarios - 1));
-//        if (quantidadeUsuarios == 0) alturaTotal = 0;
-//
-//        usuariosPanel.setPreferredSize(new Dimension(750, alturaTotal));
-//        usuariosPanel.revalidate();
-//        usuariosPanel.repaint();
+        int alturaPainel = 150; // Altura aproximada de cada painel (ajuste conforme necessário)
+        int espacoEntre = 20;
+        int margemExtra = 40;
+
+        int alturaTotal = (alturaPainel * quantidadeUsuarios) + (espacoEntre * (quantidadeUsuarios - 1)) + margemExtra;
+
+        if (quantidadeUsuarios == 0) alturaTotal = 100;
+
+        // Define a nova altura do painel
+        Dimension tamanhoPreferido = new Dimension(scrollPanel.getViewport().getWidth(), alturaTotal);
+        usuariosPanel.setPreferredSize(tamanhoPreferido);
+        usuariosPanel.setMinimumSize(tamanhoPreferido);
+
+        usuariosPanel.revalidate();
+        usuariosPanel.repaint();
     }
     
     private void enviarPedidoDeAmizade(String senderEmail, String receiverEmail) {
