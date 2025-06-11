@@ -661,10 +661,33 @@ public class Tela_Cadastro_Form extends javax.swing.JFrame {
                 "jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705"
             );
 
+            Statement stmt = con.createStatement();
+            
+            // Verificar se o e-mail já está cadastrado
+            var rsEmail = stmt.executeQuery("SELECT * FROM users WHERE email = '" + email + "'");
+            if (rsEmail.next()) {
+                JOptionPane.showMessageDialog(this, "E-mail já cadastrado. Faça login na sua conta!", "Aviso", JOptionPane.WARNING_MESSAGE);
+                rsEmail.close();
+                stmt.close();
+                con.close();
+                return;
+            }
+            rsEmail.close();
+            
+            // Verificar se o username já está em uso
+            var rsUsername = stmt.executeQuery("SELECT * FROM users WHERE username = '" + username + "'");
+            if (rsUsername.next()) {
+                JOptionPane.showMessageDialog(this, "Username já está em uso. Tente outro nome de usuário.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                rsUsername.close();
+                stmt.close();
+                con.close();
+                return;
+            }
+            rsUsername.close();
+            
+            // Se passou nas verificações, inserir o novo usuário
             String sql = "INSERT INTO users (name, email, username, password) VALUES ('"
                 + nome + "', '" + email + "', '" + username + "', '" + senha + "')";
-
-            Statement stmt = con.createStatement();
             stmt.executeUpdate(sql);
 
             stmt.close();
