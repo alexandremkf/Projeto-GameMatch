@@ -69,6 +69,8 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
         javax.swing.Icon iconeBotao = ((JLabel) panelModeloUsuario.getComponent(2)).getIcon();
 
         for (Map<String, String> user : usuarios) {
+            boolean pedidoEnviado = Boolean.parseBoolean(user.get("pedidoEnviado"));
+            
             PainelUsuario painel = new PainelUsuario(
                 user.get("username"),
                 user.get("tags"),
@@ -77,16 +79,19 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
                 panelModeloUsuario
             );
 
-            painel.setBtnAddListener(new java.awt.event.MouseAdapter() {
-                @Override
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    String receiverEmail = user.get("email");
-                    enviarPedidoDeAmizade(email, receiverEmail);
-
-                    // Oculta o botão após o clique
-                    painel.getBtnAdd().setVisible(false);
-                }
-            });
+            // Se já enviou o pedido, oculta o botão
+            if (pedidoEnviado) {
+                painel.getBtnAdd().setVisible(false);
+            } else {
+                painel.setBtnAddListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        String receiverEmail = user.get("email");
+                        enviarPedidoDeAmizade(email, receiverEmail);
+                        painel.getBtnAdd().setVisible(false);
+                    }
+                });
+            }
 
             usuariosPanel.add(painel);
             usuariosPanel.add(Box.createVerticalStrut(25)); // espaçamento entre painéis
@@ -159,6 +164,31 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
 
                 usuario.put("tags", tagsCombinadas);
                 usuarios.add(usuario);
+                
+                // Verifica se já existe pedido pendente ou amizade entre os dois (em qualquer direção)
+                String receiverEmail = rs.getString("email");
+
+                Connection con2 = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
+                String verificaSql = """
+                    SELECT * FROM friend_requests
+                    WHERE
+                        ((sender_email = ? AND receiver_email = ?) OR
+                         (sender_email = ? AND receiver_email = ?))
+                      AND status IN ('pending', 'accepted')
+                """;
+                PreparedStatement verificaStmt = con2.prepareStatement(verificaSql);
+                verificaStmt.setString(1, email);         // quem está logado
+                verificaStmt.setString(2, receiverEmail); // o outro usuário
+                verificaStmt.setString(3, receiverEmail); // inverso
+                verificaStmt.setString(4, email);         // inverso
+                ResultSet rs2 = verificaStmt.executeQuery();
+
+                boolean relacaoExiste = rs2.next();
+                usuario.put("pedidoEnviado", String.valueOf(relacaoExiste)); // salva como "true" ou "false"
+
+                rs2.close();
+                verificaStmt.close();
+                con2.close();
             }
 
             rs.close();
