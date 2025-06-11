@@ -178,7 +178,18 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                     insertStmt.executeUpdate();
                 }
 
-                JOptionPane.showMessageDialog(this, "Pedido de amizade de " + senderEmail + " aceito!");
+                // Buscar username do remetente
+                String usernameSender = "";
+                String usernameQuery = "SELECT username FROM users WHERE email = ?";
+                try (PreparedStatement stmt = conn.prepareStatement(usernameQuery)) {
+                    stmt.setString(1, senderEmail);
+                    ResultSet rs = stmt.executeQuery();
+                    if (rs.next()) {
+                        usernameSender = rs.getString("username");
+                    }
+                }
+
+                JOptionPane.showMessageDialog(this, "Pedido de amizade de " + usernameSender + " aceito!");
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao encontrar os usuários.");
             }
@@ -198,8 +209,18 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 stmt.executeUpdate();
             }
 
-            JOptionPane.showMessageDialog(this, "Pedido de amizade de " + senderEmail + " ignorado.");
+            // Buscar username do remetente
+            String usernameSender = "";
+            String usernameQuery = "SELECT username FROM users WHERE email = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(usernameQuery)) {
+                stmt.setString(1, senderEmail);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    usernameSender = rs.getString("username");
+                }
+            }
 
+            JOptionPane.showMessageDialog(this, "Pedido de amizade de " + usernameSender + " ignorado.");
         } catch (Exception e) {
             e.printStackTrace();
         }
