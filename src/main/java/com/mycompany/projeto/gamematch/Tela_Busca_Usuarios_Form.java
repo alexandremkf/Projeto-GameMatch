@@ -512,8 +512,25 @@ public class Tela_Busca_Usuarios_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_friendsBuscaMouseClicked
 
     private void btnNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotificationMouseClicked
-        new Tela_Notificacoes_Form(email).setVisible(true);
-        this.dispose();
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
+            String query = "SELECT COUNT(*) AS total FROM friend_requests WHERE receiver_email = ? AND status = 'pending'";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, email); // variável do usuário logado
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next() && rs.getInt("total") > 0) {
+                        // Existem notificações → abre a tela
+                        new Tela_Notificacoes_Form(email).setVisible(true);
+                        this.dispose(); // fecha a tela atual
+                    } else {
+                        // Nenhuma notificação → mostra aviso
+                        JOptionPane.showMessageDialog(this, "Você não possui novas notificações.");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao verificar notificações.");
+        }
     }//GEN-LAST:event_btnNotificationMouseClicked
 
     /**

@@ -2,10 +2,20 @@ package com.mycompany.projeto.gamematch;
 
 import com.mycompany.projeto.gamematch.PainelNotificacao;
 
-import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.Box;
+import java.awt.Component;
+import java.awt.Dimension;
+import javax.swing.BoxLayout;
 
 public class Tela_Notificacoes_Form extends javax.swing.JFrame {
 
@@ -15,7 +25,8 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
-        semNotificacao.setVisible(false);
+        // Esconde o painel modelo para servir apenas como base para clonagem
+        panelModeloUsuarioNotification.setVisible(false);
     }
     
     public Tela_Notificacoes_Form(String email) {
@@ -23,14 +34,72 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         this.email = email;
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         
-        // Esconde o painel modelo para servir apenas como base para clonagem
-        panelModeloUsuarioNotification.setVisible(false);
+        usuariosPanel.setLayout(new BoxLayout(usuariosPanel, BoxLayout.Y_AXIS));
         
-        carregarNotificacoes(); // Chamando a função
+        scrollPanel.setViewportView(usuariosPanel);
+        
+        exibirNotificacoes(); // Chamando a função
     }
     
-    private void carregarNotificacoes() {
-        // Conexão com o banco de dados
+    private void exibirNotificacoes() {
+        List<Map<String, String>> pedidos = buscarPedidosDeAmizade();
+
+        usuariosPanel.removeAll();
+        usuariosPanel.add(Box.createVerticalStrut(10)); // Espaço superior
+
+        // Ícone padrão retirado do modelo
+        javax.swing.Icon iconeBotao = ((JLabel) panelModeloUsuarioNotification.getComponent(2)).getIcon();
+
+        for (Map<String, String> user : pedidos) {
+            PainelNotificacao painel = new PainelNotificacao(
+                user.get("username"),
+                user.get("tags"),
+                user.get("email"),
+                btnModeloAccept.getIcon(),
+                btnModeloIgnore.getIcon()
+            );
+
+            painel.addBtnAcceptListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    aceitarPedido(user.get("email"));
+                    usuariosPanel.remove(painel);
+                    usuariosPanel.revalidate();
+                    usuariosPanel.repaint();
+                }
+            });
+
+            painel.addBtnIgnoreListener(new java.awt.event.MouseAdapter() {
+                @Override
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                    ignorarPedido(user.get("email"));
+                    usuariosPanel.remove(painel);
+                    usuariosPanel.revalidate();
+                    usuariosPanel.repaint();
+                }
+            });
+            
+            usuariosPanel.add(painel);
+            usuariosPanel.add(Box.createVerticalStrut(25)); // Espaço entre painéis
+        }
+
+        int alturaTotal = 0;
+        for (Component comp : usuariosPanel.getComponents()) {
+            alturaTotal += comp.getPreferredSize().height;
+        }
+
+        usuariosPanel.setPreferredSize(new Dimension(scrollPanel.getWidth(), alturaTotal));
+        usuariosPanel.revalidate();
+        usuariosPanel.repaint();
+        scrollPanel.revalidate();
+        scrollPanel.repaint();
+
+        usuariosPanel.add(Box.createVerticalStrut(400)); // Espaço inferior
+    }
+    
+    private List<Map<String, String>> buscarPedidosDeAmizade() {
+        List<Map<String, String>> lista = new ArrayList<>();
+
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
             String query = "SELECT u.username, u.email, u.platform, u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description " +
@@ -41,63 +110,21 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
 
-            usuariosPanel.removeAll();
-            semNotificacao.setVisible(false);
-            boolean temNotificacoes = false;
-
-            // Estrutura da notificação
             while (rs.next()) {
-                temNotificacoes = true;
+                Map<String, String> user = new HashMap<>();
+                user.put("username", rs.getString("username"));
+                user.put("email", rs.getString("email"));
 
-                String username = rs.getString("username");
-                String senderEmail = rs.getString("email");
+                String tags = "Platform: " + rs.getString("platform") + ", " +
+                              "Game Style: " + rs.getString("game_style") + ", " +
+                              "Language: " + rs.getString("language") + ", " +
+                              "M.P.G.: " + rs.getString("most_played_game") + ", " +
+                              "Playing Time: " + rs.getString("playing_time") + ", " +
+                              "Bio: " + rs.getString("self_description");
 
-                String tagsCombinadas = "Platform: " + rs.getString("platform") + ", " +
-                                        "Game Style: " + rs.getString("game_style") + ", " +
-                                        "Language: " + rs.getString("language") + ", " +
-                                        "M.P.G.: " + rs.getString("most_played_game") + ", " +
-                                        "Playing Time: " + rs.getString("playing_time") + ", " +
-                                        "Bio: " + rs.getString("self_description");
-
-                PainelNotificacao painel = new PainelNotificacao(
-                    username,
-                    tagsCombinadas,
-                    senderEmail,
-                    new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/accept.png")),
-                    new ImageIcon(getClass().getResource("/com/mycompany/projetogamematch/ignore.png"))
-                );
-
-                // Chamando a funcionaliade do botão accept
-                painel.getBtnAccept().addMouseListener(new MouseAdapter() {
-                    public void mouseClicked(MouseEvent evt) {
-                        aceitarPedido(senderEmail);
-                        usuariosPanel.remove(painel);
-                        usuariosPanel.revalidate();
-                        usuariosPanel.repaint();
-                    }
-                });
-
-                // Chamando a funcionaliade do botão ignore
-                painel.getBtnIgnore().addMouseListener(new MouseAdapter() {
-                    public void mouseClicked(MouseEvent evt) {
-                        ignorarPedido(senderEmail);
-                        usuariosPanel.remove(painel);
-                        usuariosPanel.revalidate();
-                        usuariosPanel.repaint();
-                    }
-                });
-
-                usuariosPanel.add(painel);
-                usuariosPanel.add(Box.createVerticalStrut(20));
+                user.put("tags", tags);
+                lista.add(user);
             }
-
-            // Se não tiver notificação
-            if (!temNotificacoes) {
-                semNotificacao.setVisible(true);
-            }
-
-            usuariosPanel.revalidate();
-            usuariosPanel.repaint();
 
             rs.close();
             stmt.close();
@@ -105,6 +132,8 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return lista;
     }
     
     private void aceitarPedido(String senderEmail) {
@@ -169,7 +198,6 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         btnModeloAccept = new javax.swing.JLabel();
         btnModeloIgnore = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        semNotificacao = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
 
@@ -286,11 +314,6 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(74, 103, 147));
         jLabel3.setText("Notifications:");
 
-        semNotificacao.setBackground(new java.awt.Color(8, 27, 40));
-        semNotificacao.setFont(new java.awt.Font("Monospaced", 0, 36)); // NOI18N
-        semNotificacao.setForeground(new java.awt.Color(74, 103, 147));
-        semNotificacao.setText("Nenhuma Notificação!");
-
         javax.swing.GroupLayout usuariosPanelLayout = new javax.swing.GroupLayout(usuariosPanel);
         usuariosPanel.setLayout(usuariosPanelLayout);
         usuariosPanelLayout.setHorizontalGroup(
@@ -302,10 +325,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                         .addComponent(panelModeloUsuarioNotification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(usuariosPanelLayout.createSequentialGroup()
                         .addGap(309, 309, 309)
-                        .addComponent(jLabel3))
-                    .addGroup(usuariosPanelLayout.createSequentialGroup()
-                        .addGap(242, 242, 242)
-                        .addComponent(semNotificacao)))
+                        .addComponent(jLabel3)))
                 .addContainerGap(124, Short.MAX_VALUE))
         );
         usuariosPanelLayout.setVerticalGroup(
@@ -315,9 +335,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addComponent(panelModeloUsuarioNotification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71)
-                .addComponent(semNotificacao, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(367, Short.MAX_VALUE))
         );
 
         scrollPanel.setViewportView(usuariosPanel);
@@ -507,7 +525,6 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel panelModeloUsuarioNotification;
     private javax.swing.JScrollPane scrollPanel;
-    private javax.swing.JLabel semNotificacao;
     private javax.swing.JLabel tagsLabel;
     private javax.swing.JLabel userLabel;
     private javax.swing.JLabel usernameLabel;

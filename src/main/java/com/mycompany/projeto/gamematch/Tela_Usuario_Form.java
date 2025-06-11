@@ -471,6 +471,11 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
 
         btnNotification.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/notification.png"))); // NOI18N
         btnNotification.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNotification.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNotificationMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -676,6 +681,28 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_savebtnMouseClicked
+
+    private void btnNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotificationMouseClicked
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
+            String query = "SELECT COUNT(*) AS total FROM friend_requests WHERE receiver_email = ? AND status = 'pending'";
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, email); // variável do usuário logado
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next() && rs.getInt("total") > 0) {
+                        // Existem notificações → abre a tela
+                        new Tela_Notificacoes_Form(email).setVisible(true);
+                        this.dispose(); // fecha a tela atual
+                    } else {
+                        // Nenhuma notificação → mostra aviso
+                        JOptionPane.showMessageDialog(this, "Você não possui novas notificações.");
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao verificar notificações.");
+        }
+    }//GEN-LAST:event_btnNotificationMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JlabelGameStylecriar;

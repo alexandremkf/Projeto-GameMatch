@@ -219,10 +219,6 @@
                                       <EmptySpace min="-2" pref="309" max="-2" attributes="0"/>
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
-                                      <Component id="semNotificacao" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
                               <EmptySpace pref="124" max="32767" attributes="0"/>
                           </Group>
@@ -235,9 +231,7 @@
                               <Component id="jLabel3" min="-2" pref="43" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="panelModeloUsuarioNotification" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                              <Component id="semNotificacao" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace pref="253" max="32767" attributes="0"/>
+                              <EmptySpace pref="367" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -377,20 +371,6 @@
                           <Color blue="93" green="67" red="4a" type="rgb"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Notifications:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="semNotificacao">
-                      <Properties>
-                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="28" green="1b" red="8" type="rgb"/>
-                        </Property>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Monospaced" size="36" style="0"/>
-                        </Property>
-                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                          <Color blue="93" green="67" red="4a" type="rgb"/>
-                        </Property>
-                        <Property name="text" type="java.lang.String" value="Nenhuma Notifica&#xe7;&#xe3;o!"/>
                       </Properties>
                     </Component>
                   </SubComponents>
