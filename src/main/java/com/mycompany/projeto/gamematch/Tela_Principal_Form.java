@@ -164,7 +164,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         btn8a12.setBackground(new java.awt.Color(0, 0, 0));
         btn8a12.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         btn8a12.setForeground(new java.awt.Color(255, 255, 255));
-        btn8a12.setText("8-12");
+        btn8a12.setText("12");
         btn8a12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn8a12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -175,7 +175,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         btn12a15.setBackground(new java.awt.Color(0, 0, 0));
         btn12a15.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         btn12a15.setForeground(new java.awt.Color(255, 255, 255));
-        btn12a15.setText("12-15");
+        btn12a15.setText("14");
         btn12a15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn12a15.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -186,7 +186,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
         btn15a18.setBackground(new java.awt.Color(0, 0, 0));
         btn15a18.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         btn15a18.setForeground(new java.awt.Color(255, 255, 255));
-        btn15a18.setText("15-18");
+        btn15a18.setText("18");
         btn15a18.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn15a18.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
