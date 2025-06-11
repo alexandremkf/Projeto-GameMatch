@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.projeto.gamematch;
 
 import javax.swing.JFileChooser;
@@ -108,6 +104,7 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
         TextFieldUsernamecriar = new javax.swing.JTextField();
         editbtn = new javax.swing.JLabel();
         savebtn = new javax.swing.JLabel();
+        btnDeleteAccount = new javax.swing.JLabel();
         logoutLabel = new javax.swing.JLabel();
         userLabel = new javax.swing.JLabel();
         btnNotification = new javax.swing.JLabel();
@@ -354,6 +351,14 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
             }
         });
 
+        btnDeleteAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/projeto/gamematch/trash.png"))); // NOI18N
+        btnDeleteAccount.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDeleteAccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteAccountMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
         jPanel21Layout.setHorizontalGroup(
@@ -377,20 +382,21 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
                             .addComponent(JlabelPlataforms)
                             .addComponent(TextFieldPlayingTimecriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(jPanel25, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9))
                             .addComponent(TextFieldRegioncriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TextFieldAgecriar, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(editbtn)
-                                .addGap(48, 48, 48)
-                                .addComponent(savebtn))
-                            .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(73, 73, 73)
+                        .addComponent(editbtn)
+                        .addGap(48, 48, 48)
+                        .addComponent(savebtn)
+                        .addGap(52, 52, 52)
+                        .addComponent(btnDeleteAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 27, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
@@ -412,12 +418,11 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
                         .addComponent(TextFieldAgecriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(TextFieldRegioncriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel21Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(savebtn)
-                            .addComponent(editbtn))))
-                .addGap(18, 18, 18)
+                    .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(savebtn)
+                        .addComponent(editbtn)
+                        .addComponent(btnDeleteAccount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TextFieldLanguagecriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TextFieldMostPlayedcriar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -704,6 +709,57 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnNotificationMouseClicked
 
+    private void btnDeleteAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteAccountMouseClicked
+        // Exibe um diálogo de confirmação para o usuário antes de deletar a conta
+        int resposta = JOptionPane.showConfirmDialog(this,
+                "Tem certeza que deseja deletar sua conta? Esta ação é irreversível.",
+                "Confirmar exclusão",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+
+        // Verifica se o usuário clicou em "Sim"
+        if (resposta == JOptionPane.YES_OPTION) {
+            try {
+                // Carrega o driver JDBC do MySQL
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                // Abre a conexão com o banco de dados
+                Connection con = DriverManager.getConnection(
+                        "jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
+
+                // Comando SQL para deletar o usuário com o email atual
+                String sql = "DELETE FROM users WHERE email = ?";
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                // Define o parâmetro do email na query
+                pstmt.setString(1, this.email);
+
+                // Executa a query de exclusão e retorna o número de linhas afetadas
+                int linhasAfetadas = pstmt.executeUpdate();
+
+                // Fecha o PreparedStatement e a conexão com o banco
+                pstmt.close();
+                con.close();
+
+                // Verifica se alguma linha foi afetada, ou seja, se o usuário foi deletado
+                if (linhasAfetadas > 0) {
+                    // Mostra mensagem de sucesso
+                    JOptionPane.showMessageDialog(this, "Conta deletada com sucesso!");
+                    // Abre a tela inicial
+                    new Tela_Inicial_Form().setVisible(true);
+                    // Fecha a tela atual do usuário
+                    this.dispose();
+                } else {
+                    // Se nenhuma linha foi afetada, significa que o usuário não foi encontrado no banco
+                    JOptionPane.showMessageDialog(this, "Erro: Conta não encontrada para exclusão.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+
+            } catch (Exception e) {
+                // Em caso de erro, exibe a mensagem de erro para o usuário
+                JOptionPane.showMessageDialog(this, "Erro ao deletar conta: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btnDeleteAccountMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JlabelGameStylecriar;
     private javax.swing.JLabel JlabelPlataforms;
@@ -714,6 +770,7 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     private javax.swing.JTextField TextFieldPlayingTimecriar;
     private javax.swing.JTextField TextFieldRegioncriar;
     private javax.swing.JTextField TextFieldUsernamecriar;
+    private javax.swing.JLabel btnDeleteAccount;
     private javax.swing.JLabel btnNotification;
     private javax.swing.JLabel creditsUserLabel;
     private javax.swing.JLabel editbtn;
