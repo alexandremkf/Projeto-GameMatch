@@ -922,6 +922,7 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                         "Nenhum usuário encontrado com a(s) tag(s) pesquisadas.",
                         "Nenhum resultado",
                         JOptionPane.INFORMATION_MESSAGE);
+                    jSearchTextField.setText("Search...");
                 }
             }
         } catch (Exception e) {
