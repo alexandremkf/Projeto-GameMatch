@@ -115,7 +115,9 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 user.put("username", rs.getString("username"));
                 user.put("email", rs.getString("email"));
 
-                String tags = "Platform: " + rs.getString("platform") + ", " +
+                String tags = "Age: " + rs.getString("age") + ", " +
+                              "Region: " + rs.getString("region") + ", " +
+                              "Platform: " + rs.getString("platform") + ", " +
                               "Game Style: " + rs.getString("game_style") + ", " +
                               "Language: " + rs.getString("language") + ", " +
                               "M.P.G.: " + rs.getString("most_played_game") + ", " +
