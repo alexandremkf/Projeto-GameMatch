@@ -147,17 +147,41 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                 updateStmt.executeUpdate();
             }
 
-            // Insere amizade na tabela `friends`
-            String insertQuery = "INSERT INTO friends (user_email, friend_email) VALUES (?, ?), (?, ?)";
-            try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
-                insertStmt.setString(1, email);
-                insertStmt.setString(2, senderEmail);
-                insertStmt.setString(3, senderEmail);
-                insertStmt.setString(4, email);
-                insertStmt.executeUpdate();
+            // Buscar os IDs dos usuários a partir dos e-mails
+            String getIdQuery = "SELECT id FROM users WHERE email = ?";
+            int id1 = -1, id2 = -1;
+
+            try (PreparedStatement getIdStmt = conn.prepareStatement(getIdQuery)) {
+                // ID do usuário atual (receiver)
+                getIdStmt.setString(1, email);
+                ResultSet rs1 = getIdStmt.executeQuery();
+                if (rs1.next()) {
+                    id1 = rs1.getInt("id");
+                }
+
+                // ID do remetente (sender)
+                getIdStmt.setString(1, senderEmail);
+                ResultSet rs2 = getIdStmt.executeQuery();
+                if (rs2.next()) {
+                    id2 = rs2.getInt("id");
+                }
             }
 
-            JOptionPane.showMessageDialog(this, "Pedido de amizade de " + senderEmail + " aceito!");
+            if (id1 != -1 && id2 != -1) {
+                // Inserir amizade na tabela friends
+                String insertQuery = "INSERT INTO friends (user_id1, user_id2) VALUES (?, ?), (?, ?)";
+                try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
+                    insertStmt.setInt(1, id1);
+                    insertStmt.setInt(2, id2);
+                    insertStmt.setInt(3, id2);
+                    insertStmt.setInt(4, id1);
+                    insertStmt.executeUpdate();
+                }
+
+                JOptionPane.showMessageDialog(this, "Pedido de amizade de " + senderEmail + " aceito!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao encontrar os usuários.");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
