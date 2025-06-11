@@ -882,10 +882,54 @@ public class Tela_Principal_Form extends javax.swing.JFrame {
                 "Por favor, digite algo para buscar.", 
                 "Busca inválida", 
                 JOptionPane.WARNING_MESSAGE);
-        } else {
-            // Código para acessar a tela de exibição dos usuários pesquisados:
-            new Tela_Busca_Usuarios_Form(email, textoBusca).setVisible(true);
-            this.dispose();
+            return;
+        }
+
+        // Divide o texto em tags (separadas por espaço)
+        List<String> tags = Arrays.asList(textoBusca.split("\\s+"));
+
+        // Início da query com condições AND entre as tags
+        StringBuilder queryBuilder = new StringBuilder("SELECT COUNT(*) AS total FROM users WHERE ");
+        
+        for (int i = 0; i < tags.size(); i++) {
+            if (i > 0) queryBuilder.append(" AND ");
+
+            queryBuilder.append("(");
+            queryBuilder.append(" (age = ? OR region = ? OR platform = ? OR game_style = ? OR language = ? OR most_played_game = ? OR playing_time = ?) ");
+            queryBuilder.append("AND email <> ?"); // Exclui o usuário logado
+            queryBuilder.append(")");
+        }
+
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
+             PreparedStatement stmt = conn.prepareStatement(queryBuilder.toString())) {
+
+            int paramIndex = 1;
+            for (String tag : tags) {
+                for (int i = 0; i < 7; i++) { // 7 colunas verificadas por tag
+                    stmt.setString(paramIndex++, tag);
+                }
+                stmt.setString(paramIndex++, email); // Para email <> ?
+            }
+
+            try (ResultSet rs = stmt.executeQuery()) { 
+                if (rs.next() && rs.getInt("total") > 0) {
+                    // Encontrou usuários → abre a tela de busca
+                    new Tela_Busca_Usuarios_Form(email, textoBusca).setVisible(true);
+                    this.dispose();
+                } else {
+                    // Nenhum usuário encontrado com essas tags
+                    JOptionPane.showMessageDialog(this,
+                        "Nenhum usuário encontrado com a(s) tag(s) pesquisadas.",
+                        "Nenhum resultado",
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao realizar a busca no banco de dados.",
+                "Erro de busca", 
+                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscaMouseClicked
 
