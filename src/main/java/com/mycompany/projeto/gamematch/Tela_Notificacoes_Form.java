@@ -66,6 +66,13 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                     usuariosPanel.remove(painel);
                     usuariosPanel.revalidate();
                     usuariosPanel.repaint();
+                    
+                    // Voltar para tela principal
+                    Tela_Principal_Form main = new Tela_Principal_Form(email);
+                    main.setSize(1021, 722);
+                    main.setLocationRelativeTo(null);
+                    main.setVisible(true);
+                    dispose(); // Fecha a tela de notificações
                 }
             });
 
@@ -76,6 +83,13 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
                     usuariosPanel.remove(painel);
                     usuariosPanel.revalidate();
                     usuariosPanel.repaint();
+                    
+                    // Voltar para tela principal
+                    Tela_Principal_Form main = new Tela_Principal_Form(email);
+                    main.setSize(1021, 722);
+                    main.setLocationRelativeTo(null);
+                    main.setVisible(true);
+                    dispose(); // Fecha a tela de notificações
                 }
             });
             
