@@ -102,7 +102,7 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
 
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705");
-            String query = "SELECT u.username, u.email, u.platform, u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description " +
+            String query = "SELECT u.username, u.email, u.age, u.region, u.platform, u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description " +
                            "FROM friend_requests f " +
                            "JOIN users u ON f.sender_email = u.email " +
                            "WHERE f.receiver_email = ? AND f.status = 'pending'";
