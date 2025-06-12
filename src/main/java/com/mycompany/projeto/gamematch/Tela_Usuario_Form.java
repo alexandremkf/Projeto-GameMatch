@@ -14,6 +14,7 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
 
     private String email;
     private boolean cadastroCompleto;
+    private boolean emEdicao = false;
 
     public Tela_Usuario_Form(String email, boolean cadastroCompleto) {
         initComponents();
@@ -680,6 +681,11 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldPlayingTimecriarActionPerformed
 
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
+        if (emEdicao) {
+            JOptionPane.showMessageDialog(this, "Salve as alterações antes de fazer o logout!");
+            return;
+        }
+
         // Código para ao clicar no símbolo de log out vá para a tela inicial:
         new Tela_Inicial_Form().setVisible(true);
         this.dispose();
@@ -698,18 +704,33 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_TextFieldUsernamecriarActionPerformed
 
     private void creditsUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsUserLabelMouseClicked
+        if (emEdicao) {
+            JOptionPane.showMessageDialog(this, "Salve as alterações antes de ir ver os créditos!");
+            return;
+        }
+
         // Código para ao clicar no credits vá para a tela dos creditos:
         new Tela_Creditos_Form(email).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_creditsUserLabelMouseClicked
 
     private void friendsUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_friendsUserLabelMouseClicked
-        // Código para ao clicar no Friends vá para a tela dos amigos:
+        if (emEdicao) {
+            JOptionPane.showMessageDialog(this, "Salve as alterações antes de ir ver seus amigos!");
+            return;
+        }
+
+        // Código para ao clicar no Friends vá para a tela dos amigos:é
         new Tela_Friends_Form(email).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_friendsUserLabelMouseClicked
 
     private void logoUserLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoUserLabelMouseClicked
+        if (emEdicao) {
+            JOptionPane.showMessageDialog(this, "Salve as alterações antes de ir para a home!");
+            return;
+        }
+
         // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
         Tela_Principal_Form main = new Tela_Principal_Form(email);
         main.setSize(1021, 722);
@@ -721,6 +742,8 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
 
     private void editbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editbtnMouseClicked
         setCamposEditaveis(true);  // Ativa edição
+        
+        emEdicao = true; // Bloqueia saídas
     }//GEN-LAST:event_editbtnMouseClicked
 
     private void savebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savebtnMouseClicked
@@ -763,6 +786,8 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
                     cadastroCompleto = true;
                     desbloquearSaida();
                 }
+                
+                emEdicao = false; // Libera a saída
             }
 
             pstmt.close();
@@ -809,6 +834,11 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     }
     
     private void btnNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotificationMouseClicked
+        if (emEdicao) {
+            JOptionPane.showMessageDialog(this, "Salve as alterações antes de ver suas notificações!");
+            return;
+        }
+        
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
             String query = "SELECT COUNT(*) AS total FROM friend_requests WHERE receiver_email = ? AND status = 'pending'";
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
