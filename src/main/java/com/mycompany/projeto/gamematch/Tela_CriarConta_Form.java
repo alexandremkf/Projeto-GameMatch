@@ -12,6 +12,9 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
     public Tela_CriarConta_Form() {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
+        
+        // Também pode sobrescrever o evento fechar janela para impedir fechar
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
     
     public Tela_CriarConta_Form(String email) {
@@ -40,6 +43,9 @@ public class Tela_CriarConta_Form extends javax.swing.JFrame {
         // Quebra de linhas no text area:
         jTextAreaSelfDescription.setLineWrap(true);
         jTextAreaSelfDescription.setWrapStyleWord(true);
+        
+        // Também pode sobrescrever o evento fechar janela para impedir fechar
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")

@@ -262,6 +262,7 @@ public class Tela_Login_Form extends javax.swing.JFrame {
         String email = TextFieldEmailLog.getText().trim();
         String senha = new String(jPasswordFieldLog.getPassword()).trim();
 
+        // Verificação se todos os campos foram preenchidos
         if (email.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.WARNING_MESSAGE);
             return;
@@ -279,11 +280,39 @@ public class Tela_Login_Form extends javax.swing.JFrame {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                // Abre a tela principal com base no e-mail logado (pode passar o e-mail se quiser usar depois)
-                Tela_Principal_Form main = new Tela_Principal_Form(email);
-                main.setSize(1021, 722); // Ajusta o tamanho da tela
-                main.setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
-                main.setVisible(true);              
+                // Verifica se os campos obrigatórios da conta estão preenchidos
+                String username = rs.getString("username");
+                String age = rs.getString("age");
+                String region = rs.getString("region");
+                String platform = rs.getString("platform");
+                String gameStyle = rs.getString("game_style");
+                String language = rs.getString("language");
+                String mostPlayedGame = rs.getString("most_played_game");
+                String playingTime = rs.getString("playing_time");
+                String selfDescription = rs.getString("self_description");
+
+                boolean cadastroCompleto = username != null && !username.isEmpty() &&
+                                          age != null && !age.isEmpty() &&
+                                          region != null && !region.isEmpty() &&
+                                          platform != null && !platform.isEmpty() &&
+                                          gameStyle != null && !gameStyle.isEmpty() &&
+                                          language != null && !language.isEmpty() &&
+                                          mostPlayedGame != null && !mostPlayedGame.isEmpty() &&
+                                          playingTime != null && !playingTime.isEmpty() &&
+                                          selfDescription != null && !selfDescription.isEmpty();
+
+                if (cadastroCompleto) {
+                    // Cadastro completo → vai para tela principal
+                    Tela_Principal_Form main = new Tela_Principal_Form(email);
+                    main.setSize(1021, 722);
+                    main.setLocationRelativeTo(null);
+                    main.setVisible(true);
+                } else {
+                    // Cadastro incompleto → vai para tela do usuário
+                    Tela_Usuario_Form usuarioForm = new Tela_Usuario_Form(email, false);
+                    usuarioForm.setLocationRelativeTo(null);
+                    usuarioForm.setVisible(true);
+                }            
                 
                 this.dispose(); // fecha a tela de login
             } else {

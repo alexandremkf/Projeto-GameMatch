@@ -1,25 +1,25 @@
 package com.mycompany.projeto.gamematch;
 
-import javax.swing.JFileChooser;
-import javax.swing.ImageIcon;
-import java.io.File;
-import java.awt.Image;
-import java.awt.Cursor;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JOptionPane;
-
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Tela_Usuario_Form extends javax.swing.JFrame {
 
     private String email;
+    private boolean cadastroCompleto;
 
-    public Tela_Usuario_Form(String email) {
+    public Tela_Usuario_Form(String email, boolean cadastroCompleto) {
         initComponents();
         setLocationRelativeTo(null); // Serve para começar com a tela centralizada.
         this.email = email;
+        this.cadastroCompleto = cadastroCompleto;
 
         // Carrega os dados do usuário
         carregarDadosUsuario();
@@ -29,8 +29,86 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
         
         setCamposEditaveis(false); // esse método controla habilitação
 
+        if (!cadastroCompleto) {
+            // Mensagem para o usuário
+            JOptionPane.showMessageDialog(this,
+                "Seu cadastro está incompleto. Por favor, complete todos os campos para continuar.",
+                "Atenção", JOptionPane.WARNING_MESSAGE);
+
+            if (!cadastroCompleto) {
+            aplicarPlaceholder(TextFieldUsernamecriar, "Username");
+            aplicarPlaceholder(TextFieldAgecriar, "Age");
+            aplicarPlaceholder(TextFieldRegioncriar, "Region");
+            aplicarPlaceholder(TextFieldLanguagecriar, "Language");
+            aplicarPlaceholder(TextFieldMostPlayedcriar, "Most Played Game");
+            aplicarPlaceholder(TextFieldPlayingTimecriar, "Playing Time");
+            aplicarPlaceholderTextArea(jTextAreaSelfDescription, "Self Description...");
+        }
+            
+            bloquearSaida(); // bloqueia ações que levam a sair da tela até cadastro completo
+        }
     }
 
+    private void aplicarPlaceholder(JTextField campo, String placeholder) {
+        campo.setText(placeholder);
+
+        campo.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (campo.getText().equals(placeholder)) {
+                    campo.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (campo.getText().isEmpty()) {
+                    campo.setText(placeholder);
+                }
+            }
+        });
+    }
+    
+    private void aplicarPlaceholderTextArea(JTextArea campo, String placeholder) {
+        campo.setText(placeholder);
+
+        campo.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (campo.getText().equals(placeholder)) {
+                    campo.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (campo.getText().isEmpty()) {
+                    campo.setText(placeholder);
+                }
+            }
+        });
+    }
+    
+    private void bloquearSaida() {
+        // Desabilita o botão logout e outros que levam a outras telas
+        logoutLabel.setEnabled(false);
+        creditsUserLabel.setEnabled(false);
+        friendsUserLabel.setEnabled(false);
+
+        // Também pode sobrescrever o evento fechar janela para impedir fechar
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        // Mostra um aviso se o usuário tentar fechar a janela
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                JOptionPane.showMessageDialog(null,
+                    "Por favor, complete seu cadastro antes de sair.",
+                    "Cadastro incompleto", JOptionPane.WARNING_MESSAGE);
+            }
+        });
+    }
+    
     private void carregarDadosUsuario() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -646,8 +724,15 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_editbtnMouseClicked
 
     private void savebtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_savebtnMouseClicked
+        // Verifica se todos os campos estão preenchidos
+        if (camposEstaoVazios()) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor, preencha todos os campos antes de salvar.",
+                "Campos obrigatórios", JOptionPane.WARNING_MESSAGE);
+            return; // Impede o salvamento
+        }
+
         // Código para salvar os dados no banco aqui...
-        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
@@ -672,8 +757,12 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
 
             if (linhasAfetadas > 0) {
                 JOptionPane.showMessageDialog(this, "Dados atualizados com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Não foi possível atualizar os dados.", "Erro", JOptionPane.ERROR_MESSAGE);
+                
+                // Se estava bloqueado, libera a saída
+                if (!cadastroCompleto) {
+                    cadastroCompleto = true;
+                    desbloquearSaida();
+                }
             }
 
             pstmt.close();
@@ -687,6 +776,38 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_savebtnMouseClicked
 
+    private boolean camposEstaoVazios() {
+        return TextFieldUsernamecriar.getText().trim().isEmpty() ||
+               TextFieldAgecriar.getText().trim().isEmpty() ||
+               TextFieldRegioncriar.getText().trim().isEmpty() ||
+               TextFieldLanguagecriar.getText().trim().isEmpty() ||
+               TextFieldMostPlayedcriar.getText().trim().isEmpty() ||
+               TextFieldPlayingTimecriar.getText().trim().isEmpty() ||
+               jTextAreaSelfDescription.getText().trim().isEmpty() ||
+               TextFieldUsernamecriar.getText().equals("Username") ||
+               TextFieldAgecriar.getText().equals("Age") ||
+               TextFieldRegioncriar.getText().equals("Region") ||
+               TextFieldLanguagecriar.getText().equals("Language") ||
+               TextFieldMostPlayedcriar.getText().equals("Most Played Game") ||
+               TextFieldPlayingTimecriar.getText().equals("Playing Time") ||
+               jTextAreaSelfDescription.getText().equals("Self Description...");
+    }
+    
+    private void desbloquearSaida() {
+        logoutLabel.setEnabled(true);
+        creditsUserLabel.setEnabled(true);
+        friendsUserLabel.setEnabled(true);
+        logoUserLabel.setEnabled(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        // Remove o listener que bloqueia fechar, se quiser pode implementar
+        for (java.awt.event.WindowListener wl : this.getWindowListeners()) {
+            if (wl instanceof java.awt.event.WindowAdapter) {
+                this.removeWindowListener(wl);
+            }
+        }
+    }
+    
     private void btnNotificationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNotificationMouseClicked
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
             String query = "SELECT COUNT(*) AS total FROM friend_requests WHERE receiver_email = ? AND status = 'pending'";

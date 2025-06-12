@@ -231,7 +231,7 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
 
     private void userLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userLabelMouseClicked
         // Código para ao clicar no símbolo do user vá para a tela do usuário:
-        new Tela_Usuario_Form(email).setVisible(true);
+        new Tela_Usuario_Form(email, true).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_userLabelMouseClicked
 
