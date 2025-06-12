@@ -48,6 +48,19 @@ public class Tela_Usuario_Form extends javax.swing.JFrame {
             
             bloquearSaida(); // bloqueia ações que levam a sair da tela até cadastro completo
         }
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                if (emEdicao) {
+                    JOptionPane.showMessageDialog(null, "Salve as edições antes de fechar.");
+                } else {
+                    dispose(); // ou System.exit(0), dependendo do seu caso
+                }
+            }
+        });
     }
 
     private void aplicarPlaceholder(JTextField campo, String placeholder) {
