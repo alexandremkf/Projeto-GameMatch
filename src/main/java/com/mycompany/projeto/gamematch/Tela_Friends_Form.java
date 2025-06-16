@@ -365,7 +365,8 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
 
             // Buscar os amigos do usuário logado
             String sqlFriends = """
-                SELECT u.username, u.email, u.age, u.region, u.platform, u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description 
+                SELECT DISTINCT u.id, u.username, u.email, u.age, u.region, u.platform, 
+                                u.game_style, u.language, u.most_played_game, u.playing_time, u.self_description 
                 FROM friends f
                 JOIN users u ON (
                     (f.user_id1 = ? AND u.id = f.user_id2)
