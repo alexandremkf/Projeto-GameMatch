@@ -334,9 +334,18 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
             usuariosPanel.add(painel);
             usuariosPanel.add(Box.createVerticalStrut(25)); // espaço entre painéis
         }
-
+        
+        // Adiciona espaço final
         usuariosPanel.add(Box.createVerticalGlue());
 
+        // AJUSTA A ALTURA
+        int alturaTotal = 0;
+        for (Component comp : usuariosPanel.getComponents()) {
+            alturaTotal += comp.getPreferredSize().height;
+        }
+        usuariosPanel.setPreferredSize(new java.awt.Dimension(scrollPanel.getWidth(), alturaTotal));
+        
+        // Atualiza tudo
         usuariosPanel.revalidate();
         usuariosPanel.repaint();
         scrollPanel.revalidate();
