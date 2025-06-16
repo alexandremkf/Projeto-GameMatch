@@ -425,21 +425,24 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
         return amigos;
     }
     
-        private void desfazerAmizade(String userEmail, String friendEmail) {
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705");
-            String sql = "DELETE FROM friends WHERE (user_email = ? AND friend_email = ?) OR (user_email = ? AND friend_email = ?)";
+    private void desfazerAmizade(String userEmail, String friendEmail) {
+        try (Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/gamematch_db", "root", "2705")) {
+
+            int userId = buscarIdPorEmail(userEmail);
+            int friendId = buscarIdPorEmail(friendEmail);
+
+            String sql = "DELETE FROM friends WHERE (user_id1 = ? AND user_id2 = ?) OR (user_id1 = ? AND user_id2 = ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, userEmail);
-            stmt.setString(2, friendEmail);
-            stmt.setString(3, friendEmail);
-            stmt.setString(4, userEmail);
+            stmt.setInt(1, userId);
+            stmt.setInt(2, friendId);
+            stmt.setInt(3, friendId);
+            stmt.setInt(4, userId);
+
             int rows = stmt.executeUpdate();
             stmt.close();
-            con.close();
-            
+
             JOptionPane.showMessageDialog(this, "Amizade desfeita com sucesso!");
-            exibirAmigos(); // atualizar lista
+            exibirAmigos(); // Atualiza a lista
         } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Erro ao desfazer amizade.", "Erro", JOptionPane.ERROR_MESSAGE);
