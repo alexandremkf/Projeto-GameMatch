@@ -511,9 +511,43 @@ public class Tela_Notificacoes_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_logoGMfriendsMouseClicked
 
     private void friendsBuscaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_friendsBuscaMouseClicked
-        // Código para ao clicar no Friends vá para a tela dos amigos:
-        new Tela_Friends_Form(email).setVisible(true);
-        this.dispose();
+                try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/gamematch_db", "root", "2705")) {
+            // Primeiro busca o ID do usuário logado
+            String getIdQuery = "SELECT id FROM users WHERE email = ?";
+            try (PreparedStatement stmtId = conn.prepareStatement(getIdQuery)) {
+                stmtId.setString(1, email);
+                try (ResultSet rsId = stmtId.executeQuery()) {
+                    if (rsId.next()) {
+                        int userId = rsId.getInt("id");
+
+                        // Agora verifica se tem algum amigo
+                        String checkFriendsQuery = "SELECT COUNT(*) AS total FROM friends WHERE user_id1 = ? OR user_id2 = ?";
+                        try (PreparedStatement stmtFriends = conn.prepareStatement(checkFriendsQuery)) {
+                            stmtFriends.setInt(1, userId);
+                            stmtFriends.setInt(2, userId);
+
+                            try (ResultSet rsFriends = stmtFriends.executeQuery()) {
+                                if (rsFriends.next() && rsFriends.getInt("total") > 0) {
+                                    // Tem amigos → abre a tela
+                                    new Tela_Friends_Form(email).setVisible(true);
+                                    this.dispose();
+                                } else {
+                                    // Nenhum amigo ainda
+                                    JOptionPane.showMessageDialog(this, "Você ainda não possui amigos. Faça novas amizades para acessar essa tela!");
+                                }
+                            }
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Usuário não encontrado.");
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro ao verificar amizades.");
+        }
     }//GEN-LAST:event_friendsBuscaMouseClicked
 
     private void creditsLabelfriendsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditsLabelfriendsMouseClicked
