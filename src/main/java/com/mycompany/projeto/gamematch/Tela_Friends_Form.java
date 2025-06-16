@@ -15,7 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import java.awt.Component;
-import java.awt.Dimension;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Tela_Friends_Form extends javax.swing.JFrame {
     
@@ -380,10 +381,18 @@ public class Tela_Friends_Form extends javax.swing.JFrame {
 
             ResultSet rsFriends = psFriends.executeQuery();
 
+            Set<String> emailsAdicionados = new HashSet<>();
+
             while (rsFriends.next()) {
+                String emailAmigo = rsFriends.getString("email");
+                if (emailsAdicionados.contains(emailAmigo)) {
+                    continue; // já adicionou esse amigo
+                }
+                emailsAdicionados.add(emailAmigo);
+
                 Map<String, String> amigo = new HashMap<>();
                 amigo.put("username", rsFriends.getString("username"));
-                amigo.put("email", rsFriends.getString("email"));
+                amigo.put("email", emailAmigo);
                 String tags = "Age: " + rsFriends.getString("age") +
                               ", Region: " + rsFriends.getString("region") +
                               ", Platform: " + rsFriends.getString("platform") +
