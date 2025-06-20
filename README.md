@@ -14,11 +14,8 @@
 - **Linguagem de Programação**: Java
 - **IDE**: NetBeans 25
 - **Interface Gráfica**: JFrame (NetBeans)
-- **Banco de Dados**: MySQL, gerenciado via **phpMyAdmin**
+- **Banco de Dados**: MySQL, gerenciado via **MYSQL WorkBench**
 
-## 👨‍💻 Autores
+## 👨‍💻 Autor
 Feito com **dedicação** por: 
 - Alexandre Matiello
-- Carlos Luiz Bezerra
-- Pedro Henrique Fender
-- Yashar Nazari
